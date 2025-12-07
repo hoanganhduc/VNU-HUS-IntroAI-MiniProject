@@ -36,8 +36,6 @@ See 📄 [Rubrics.md](Rubrics.md) for details on the mini-project evaluation cri
 
 ---
 
----
-
 ## 📝 Hướng dẫn nộp bài
 
 ### 📋 Yêu cầu
