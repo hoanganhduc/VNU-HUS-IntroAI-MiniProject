@@ -1,46 +1,109 @@
-[🇬🇧 English](#mini-project-rubric) | [🇻🇳 Vietnamese](#tiêu-chí-đánh-giá-bài-tập-nhóm)
+# Final-project rubric / Thang điểm dự án cuối kỳ
 
----
+[English](#english) | [Tiếng Việt](#tiếng-việt)
 
-## Mini-Project Rubric
+## English
 
-*Report evaluation points: 60. Presentation points: 40. Total: 100*
+The topic proposal is required but ungraded. The final examination has eight
+scored components under two main aspects:
 
-| Criterion | Max Points | Excellent | Good | Needs Improvement |
-|-----------|------------|-----------|------|-------------------|
-| **Executive Summary** | 4 | >3–4: Clear, concise overview; objectives and key results well stated | >2–3: Overview present but lacks clarity or detail | 0–2: Missing or unclear summary |
-| **Problem Statement** | 4 | >3–4: Problem clearly described; relevance and motivation well explained | >2–3: Problem described but relevance/motivation not fully clear | 0–2: Problem statement missing or vague |
-| **Methodology** | 10 | >7–10: Approach, algorithms, and data thoroughly explained; choices justified | >4–7: Methodology described but lacks detail or justification | 0–4: Methodology unclear or missing |
-| **Implementation** | 10 | >7–10: System, tools, and code structure clearly described; well-organized | >4–7: Implementation described but lacks clarity or organization | 0–4: Implementation missing or poorly described |
-| **Results & Discussion** | 14 | >10–14: Results presented with clear metrics; insightful analysis and discussion | >5–10: Results presented but analysis lacks depth or clarity | 0–5: Results missing or analysis superficial |
-| **Conclusion & Future Work** | 6 | >4–6: Contributions summarized; realistic suggestions for improvement/future work | >2–4: Summary present but suggestions are vague or missing | 0–2: Conclusion missing or lacks relevance |
-| **References** | 3 | >2–3: All sources cited properly; relevant and sufficient | >1–2: Some sources cited; minor formatting issues | 0–1: References missing or poorly formatted |
-| **Appendices (Optional)** | 1 | >0.7–1: Useful additional materials provided (code, results, manual) | >0.4–0.7: Appendices present but not useful or incomplete | 0–0.4: No appendices or irrelevant content |
-| **Report Format & Submission** | 4 | >3–4: PDF, well-formatted, submitted to GitHub, Canvas, and printed; follows all guidelines | >2–3: Minor issues with format or submission | 0–2: Major format/submission issues |
-| **Code Documentation & Teamwork** | 4 | >3–4: Code well-documented (comments, docstrings, README); all team contributions acknowledged | >2–3: Documentation present but incomplete; team contributions partially noted | 0–2: Poor documentation; team contributions not acknowledged |
-| **Slides** | 12 | >9–12: Visually appealing, well-organized, clear structure, supports key points | >5–9: Adequate visuals and structure, some unclear points, supports most key ideas | 0–5: Disorganized, hard to read, lacks structure, does not support content |
-| **Presentation Style** | 12 | >9–12: Confident, engaging, clear speech, maintains audience interest, good pacing | >5–9: Mostly clear, some engagement, minor pacing or clarity issues | 0–5: Unclear, monotone, little engagement, poor pacing |
-| **Q&A** | 16 | >12–16: Answers questions accurately and thoughtfully, demonstrates deep understanding, responds respectfully | >6–12: Answers most questions, some uncertainty or lack of depth | 0–6: Unable to answer questions, superficial or incorrect responses |
+```text
+Report:       60 points — five group-scored components
+Presentation: 40 points — three individually scored components
+Total:       100 points
+```
 
----
+The descriptions below explain what each component covers. They do not create
+further sub-scores.
 
-## Tiêu chí đánh giá Bài tập nhóm
+### Report — 60 points, shared by the group
 
-*Điểm đánh giá báo cáo: 60. Điểm trình bày: 40. Tổng: 100*
+| Component | Points | What is considered |
+|---|---:|---|
+| **Summary, problem, and motivation** | **8** | A concise project overview; a clear problem statement; objectives, relevance, and motivation; and the principal result or intended contribution. |
+| **Methodology and implementation** | **20** | The approach, algorithms, data, and important design choices; justification of those choices; the implemented system, tools, and code organization; and consistency between the report and repository. |
+| **Results, discussion, conclusion, and future work** | **20** | Appropriate evidence, experiments, examples, or evaluation; clear results and metrics when applicable; interpretation and discussion rather than output alone; important limitations or failures; conclusions; and realistic future directions. |
+| **References and supporting materials** | **4** | Genuine sources actually used, appropriate attribution, and useful appendices or external supporting materials when relevant. A project is not penalized for omitting an appendix that it does not need. |
+| **Report quality, repository documentation, and contributions** | **8** | A readable final PDF; compliance with the current exact-commit GitHub submission process; useful README, setup, and reproduction instructions; appropriate code or project documentation; and clear contribution, AI-use, and external-resource declarations. Canvas and printed-copy submission are not required. |
+| **Report total** | **60** | One group total shared by the valid group members. |
 
-| Tiêu chí | Điểm tối đa | Xuất sắc | Tốt | Cần cải thiện |
-|----------|-------------|----------|-----|---------------|
-| **Tóm tắt dự án** | 4 | >3–4: Tổng quan rõ ràng, súc tích; nêu mục tiêu và kết quả chính | >2–3: Có tổng quan nhưng chưa rõ ràng hoặc thiếu chi tiết | 0–2: Thiếu hoặc tóm tắt không rõ ràng |
-| **Phát biểu vấn đề** | 4 | >3–4: Mô tả vấn đề rõ ràng; giải thích ý nghĩa và động lực | >2–3: Mô tả vấn đề nhưng ý nghĩa/động lực chưa rõ | 0–2: Thiếu hoặc phát biểu vấn đề mơ hồ |
-| **Phương pháp** | 10 | >7–10: Trình bày đầy đủ phương pháp, thuật toán, dữ liệu; giải thích lựa chọn | >4–7: Trình bày phương pháp nhưng thiếu chi tiết hoặc giải thích | 0–4: Phương pháp không rõ ràng hoặc thiếu |
-| **Triển khai** | 10 | >7–10: Mô tả rõ hệ thống, công cụ, cấu trúc mã nguồn; tổ chức tốt | >4–7: Mô tả triển khai nhưng chưa rõ hoặc tổ chức chưa tốt | 0–4: Thiếu hoặc mô tả triển khai kém |
-| **Kết quả & Thảo luận** | 14 | >10–14: Trình bày kết quả với số liệu rõ ràng; phân tích sâu sắc | >5–10: Có kết quả nhưng phân tích chưa sâu hoặc chưa rõ | 0–5: Thiếu kết quả hoặc phân tích sơ sài |
-| **Kết luận & Hướng phát triển** | 6 | >4–6: Tóm tắt đóng góp; đề xuất cải tiến/hướng phát triển thực tế | >2–4: Có tóm tắt nhưng đề xuất chưa rõ hoặc thiếu | 0–2: Thiếu kết luận hoặc không liên quan |
-| **Tài liệu tham khảo** | 3 | >2–3: Trích dẫn đầy đủ, phù hợp và đủ | >1–2: Có trích dẫn nhưng sai định dạng nhỏ | 0–1: Thiếu hoặc trích dẫn kém |
-| **Phụ lục (Tùy chọn)** | 1 | >0.7–1: Có tài liệu bổ sung hữu ích (mã nguồn, kết quả, hướng dẫn) | >0.4–0.7: Có phụ lục nhưng chưa hữu ích hoặc chưa đầy đủ | 0–0.4: Không có phụ lục hoặc nội dung không liên quan |
-| **Định dạng & Nộp bài** | 4 | >3–4: Báo cáo PDF, định dạng rõ ràng, nộp đủ trên GitHub, Canvas, bản in; đúng hướng dẫn | >2–3: Có lỗi nhỏ về định dạng hoặc nộp bài | 0–2: Lỗi lớn về định dạng hoặc nộp bài |
-| **Tài liệu mã nguồn & Làm việc nhóm** | 4 | >3–4: Mã nguồn có chú thích rõ ràng, đầy đủ; ghi nhận đóng góp của các thành viên | >2–3: Có chú thích nhưng chưa đầy đủ; ghi nhận đóng góp chưa rõ | 0–2: Thiếu chú thích; không ghi nhận đóng góp nhóm |
-| **Slide** | 12 | >9–12: Slide đẹp, bố cục rõ ràng, cấu trúc hợp lý, hỗ trợ nội dung chính | >5–9: Slide đủ hình ảnh, bố cục, có điểm chưa rõ, hỗ trợ phần lớn ý chính | 0–5: Slide lộn xộn, khó đọc, thiếu cấu trúc, không hỗ trợ nội dung |
-| **Phong cách trình bày** | 12 | >9–12: Tự tin, cuốn hút, nói rõ ràng, giữ sự chú ý của khán giả, tốc độ hợp lý | >5–9: Trình bày khá rõ, có sự tương tác, đôi lúc chưa hợp lý về tốc độ hoặc diễn đạt | 0–5: Trình bày không rõ, đơn điệu, ít tương tác, tốc độ kém |
-| **Trả lời câu hỏi** | 16 | >12–16: Trả lời chính xác, sâu sắc, thể hiện hiểu biết, phản hồi lịch sự | >6–12: Trả lời được hầu hết câu hỏi, đôi lúc chưa sâu hoặc chưa chắc chắn | 0–6: Không trả lời được, trả lời sơ sài hoặc sai |
+### Presentation — 40 points, scored individually
 
+| Component | Points | What is considered |
+|---|---:|---|
+| **Slides** | **12** | Readability, organization, visual support, clear structure, and focus on the important content. The slides are shared evidence, but this component remains part of each student's individual Presentation total. |
+| **Oral presentation and time management** | **12** | Clear and confident explanation, meaningful participation, suitable pacing, and effective use of the group's 50-minute examination slot. |
+| **Q&A and demonstrated understanding** | **16** | Accurate and thoughtful answers, ability to explain and defend important choices, and demonstrated understanding of the implementation, results, limitations, and the student's claimed contribution. |
+| **Presentation total** | **40** | One individual total for each student. |
+
+Each student's final-project score is:
+
+```text
+final-project score = group Report total (0–60)
+                    + individual Presentation total (0–40)
+```
+
+Students in the same group share the Report total but may receive different
+Presentation totals. The three Presentation components are individual even
+though the group uses common slides and one shared 50-minute slot.
+
+These eight scored components are complete. There are no further points for
+commit count, lines changed, number of pull requests, or general GitHub
+activity. Repository history and `CONTRIBUTIONS.md` are evidence, not mechanical
+formulas. Academic-integrity violations, unapproved group changes,
+exceptionally accepted late submissions, and approved presentation absences are
+handled under the corresponding course policy rather than through extra rubric
+rows.
+
+## Tiếng Việt
+
+Đề xuất chủ đề là bắt buộc nhưng không có điểm riêng. Bài thi cuối kỳ có tám
+thành phần chấm điểm thuộc hai phần chính:
+
+```text
+Báo cáo:   60 điểm — năm thành phần chấm chung cho nhóm
+Trình bày: 40 điểm — ba thành phần chấm riêng cho từng sinh viên
+Tổng:     100 điểm
+```
+
+Các mô tả dưới đây giải thích nội dung của từng thành phần, không tạo thêm các
+điểm thành phần nhỏ hơn.
+
+### Báo cáo — 60 điểm, dùng chung cho nhóm
+
+| Thành phần | Điểm | Nội dung xem xét |
+|---|---:|---|
+| **Tóm tắt, bài toán và động lực** | **8** | Tổng quan súc tích về dự án; phát biểu rõ bài toán; mục tiêu, ý nghĩa và động lực; cùng kết quả chính hoặc đóng góp dự kiến. |
+| **Phương pháp và triển khai** | **20** | Cách tiếp cận, thuật toán, dữ liệu và các lựa chọn thiết kế quan trọng; lý do của các lựa chọn; hệ thống đã triển khai, công cụ và tổ chức mã nguồn; cùng sự nhất quán giữa báo cáo và kho dự án. |
+| **Kết quả, thảo luận, kết luận và hướng phát triển** | **20** | Minh chứng, thí nghiệm, ví dụ hoặc đánh giá phù hợp; kết quả và số liệu rõ ràng khi áp dụng được; phân tích và thảo luận thay vì chỉ liệt kê đầu ra; các giới hạn hoặc thất bại quan trọng; kết luận; và hướng phát triển thực tế. |
+| **Tài liệu tham khảo và tài liệu bổ trợ** | **4** | Các nguồn thực sự được sử dụng, ghi nguồn phù hợp, cùng phụ lục hoặc tài liệu bổ trợ hữu ích khi cần. Nhóm không bị trừ điểm chỉ vì không có phụ lục khi dự án không cần phụ lục. |
+| **Chất lượng báo cáo, tài liệu kho dự án và đóng góp** | **8** | Báo cáo PDF dễ đọc; tuân thủ quy trình nộp bằng commit Git chính xác; README, hướng dẫn cài đặt và tái tạo kết quả hữu ích; tài liệu mã nguồn hoặc dự án phù hợp; cùng khai báo rõ đóng góp, việc sử dụng AI và tài nguyên bên ngoài. Không yêu cầu nộp qua Canvas hoặc nộp bản in. |
+| **Tổng điểm Báo cáo** | **60** | Một điểm chung cho các thành viên hợp lệ của nhóm. |
+
+### Trình bày — 40 điểm, chấm riêng từng sinh viên
+
+| Thành phần | Điểm | Nội dung xem xét |
+|---|---:|---|
+| **Slide** | **12** | Khả năng đọc, bố cục, hỗ trợ trực quan, cấu trúc rõ ràng và tập trung vào nội dung quan trọng. Slide là minh chứng dùng chung nhưng thành phần này vẫn thuộc điểm Trình bày cá nhân của từng sinh viên. |
+| **Trình bày miệng và quản lý thời gian** | **12** | Giải thích rõ ràng, tự tin; tham gia có ý nghĩa; tốc độ phù hợp; và sử dụng hiệu quả khung thời gian 50 phút của nhóm. |
+| **Hỏi đáp và mức độ hiểu biết** | **16** | Trả lời chính xác và có suy nghĩ; có khả năng giải thích và bảo vệ các lựa chọn quan trọng; thể hiện hiểu biết về phần triển khai, kết quả, giới hạn và đóng góp mà sinh viên khai báo. |
+| **Tổng điểm Trình bày** | **40** | Một điểm riêng cho từng sinh viên. |
+
+Điểm dự án của mỗi sinh viên là:
+
+```text
+điểm dự án = tổng điểm Báo cáo của nhóm (0–60)
+           + tổng điểm Trình bày cá nhân (0–40)
+```
+
+Các sinh viên trong cùng nhóm dùng chung tổng điểm Báo cáo nhưng có thể có tổng
+điểm Trình bày khác nhau. Ba thành phần Trình bày được chấm riêng cho từng sinh
+viên dù cả nhóm dùng chung slide và một khung thời gian 50 phút.
+
+Tám thành phần trên là toàn bộ phần chấm điểm. Không có thêm điểm cho số commit,
+số dòng thay đổi, số pull request hoặc mức độ hoạt động chung trên GitHub. Lịch
+sử kho và `CONTRIBUTIONS.md` là minh chứng, không được chuyển thành điểm theo công
+thức máy móc. Vi phạm liêm chính học thuật, thay đổi nhóm chưa được phê duyệt,
+trường hợp nộp muộn đặc biệt và trường hợp vắng trình bày đã được chấp nhận được
+xử lý theo chính sách tương ứng của học phần, không tạo thêm dòng trong thang
+điểm.
