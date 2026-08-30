@@ -9,7 +9,7 @@ scored components under two main aspects:
 
 ```text
 Report:       60 points — five group-scored components
-Presentation: 40 points — three individually scored components
+Presentation: 40 points — one shared Slides component and two individual components
 Total:       100 points
 ```
 
@@ -31,10 +31,10 @@ further sub-scores.
 
 | Component | Points | What is considered |
 |---|---:|---|
-| **Slides** | **12** | Readability, organization, visual support, clear structure, and focus on the important content. The slides are shared evidence, but this component remains part of each student's individual Presentation total. |
+| **Slides** | **12** | Readability, organization, visual support, clear structure, and focus on the important content. This is one shared group score: a given teacher assigns the same Slides score to every valid member of the group. |
 | **Oral presentation and time management** | **12** | Clear and confident explanation, meaningful participation, suitable pacing, and effective use of the group's 50-minute examination slot. |
 | **Q&A and demonstrated understanding** | **16** | Accurate and thoughtful answers, ability to explain and defend important choices, and demonstrated understanding of the implementation, results, limitations, and the student's claimed contribution. |
-| **Presentation total** | **40** | One individual total for each student. |
+| **Presentation total** | **40** | For each student: shared Slides score + individual Oral score + individual Q&A score. |
 
 Each student's final-project score is:
 
@@ -43,9 +43,15 @@ final-project score = group Report total (0–60)
                     + individual Presentation total (0–40)
 ```
 
-Students in the same group share the Report total but may receive different
-Presentation totals. The three Presentation components are individual even
-though the group uses common slides and one shared 50-minute slot.
+Students in the same group share the Report total and, from a given teacher,
+the Slides score. Oral presentation and Q&A are individual, so students may
+receive different Presentation totals.
+
+When multiple teachers grade a project, each teacher independently completes the
+full rubric and produces one total score out of 100 for each student. The
+student's final score is the arithmetic mean of those teachers' complete total
+scores. No separate average is calculated for any component, the Report subtotal,
+or the Presentation subtotal.
 
 These eight scored components are complete. There are no further points for
 commit count, lines changed, number of pull requests, or general GitHub
@@ -62,7 +68,7 @@ thành phần chấm điểm thuộc hai phần chính:
 
 ```text
 Báo cáo:   60 điểm — năm thành phần chấm chung cho nhóm
-Trình bày: 40 điểm — ba thành phần chấm riêng cho từng sinh viên
+Trình bày: 40 điểm — một thành phần Slide chấm chung và hai thành phần cá nhân
 Tổng:     100 điểm
 ```
 
@@ -84,10 +90,10 @@ Các mô tả dưới đây giải thích nội dung của từng thành phần,
 
 | Thành phần | Điểm | Nội dung xem xét |
 |---|---:|---|
-| **Slide** | **12** | Khả năng đọc, bố cục, hỗ trợ trực quan, cấu trúc rõ ràng và tập trung vào nội dung quan trọng. Slide là minh chứng dùng chung nhưng thành phần này vẫn thuộc điểm Trình bày cá nhân của từng sinh viên. |
+| **Slide** | **12** | Khả năng đọc, bố cục, hỗ trợ trực quan, cấu trúc rõ ràng và tập trung vào nội dung quan trọng. Đây là một điểm chung của nhóm: mỗi giảng viên cho cùng một điểm Slide đối với mọi thành viên hợp lệ của nhóm. |
 | **Trình bày miệng và quản lý thời gian** | **12** | Giải thích rõ ràng, tự tin; tham gia có ý nghĩa; tốc độ phù hợp; và sử dụng hiệu quả khung thời gian 50 phút của nhóm. |
 | **Hỏi đáp và mức độ hiểu biết** | **16** | Trả lời chính xác và có suy nghĩ; có khả năng giải thích và bảo vệ các lựa chọn quan trọng; thể hiện hiểu biết về phần triển khai, kết quả, giới hạn và đóng góp mà sinh viên khai báo. |
-| **Tổng điểm Trình bày** | **40** | Một điểm riêng cho từng sinh viên. |
+| **Tổng điểm Trình bày** | **40** | Với mỗi sinh viên: điểm Slide chung + điểm Trình bày miệng cá nhân + điểm Hỏi đáp cá nhân. |
 
 Điểm dự án của mỗi sinh viên là:
 
@@ -96,9 +102,15 @@ Các mô tả dưới đây giải thích nội dung của từng thành phần,
            + tổng điểm Trình bày cá nhân (0–40)
 ```
 
-Các sinh viên trong cùng nhóm dùng chung tổng điểm Báo cáo nhưng có thể có tổng
-điểm Trình bày khác nhau. Ba thành phần Trình bày được chấm riêng cho từng sinh
-viên dù cả nhóm dùng chung slide và một khung thời gian 50 phút.
+Các sinh viên trong cùng nhóm dùng chung tổng điểm Báo cáo và, đối với từng
+giảng viên, dùng chung điểm Slide. Điểm Trình bày miệng và Hỏi đáp được chấm cá
+nhân, vì vậy tổng điểm Trình bày có thể khác nhau.
+
+Khi có nhiều giảng viên chấm, mỗi giảng viên độc lập chấm toàn bộ thang điểm và
+cho một tổng điểm trên 100 đối với từng sinh viên. Điểm cuối cùng của sinh viên
+là trung bình cộng của các tổng điểm đầy đủ do các giảng viên cho. Không tính
+trung bình riêng cho bất kỳ thành phần nào, tổng điểm Báo cáo hoặc tổng điểm
+Trình bày.
 
 Tám thành phần trên là toàn bộ phần chấm điểm. Không có thêm điểm cho số commit,
 số dòng thay đổi, số pull request hoặc mức độ hoạt động chung trên GitHub. Lịch

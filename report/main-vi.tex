@@ -1,0 +1,156 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T5]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\geometry{margin=2.5cm}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue,
+  pdftitle={Báo cáo Dự án cuối kỳ môn Nhập môn Trí tuệ Nhân tạo}
+}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+\renewcommand{\arraystretch}{1.2}
+
+% -----------------------------------------------------------------------------
+% Thay các trường dưới đây. Mã học phần là MAT1206E hoặc MAT3508.
+% Họ tên chính thức và mã sinh viên chỉ nằm trong báo cáo riêng tư khi chính
+% sách cuối cùng của giảng viên yêu cầu.
+% -----------------------------------------------------------------------------
+\newcommand{\ProjectTitle}{THAY TÊN DỰ ÁN}
+\newcommand{\GroupName}{THAY TÊN NHÓM}
+\newcommand{\CourseCode}{THAY BẰNG MAT1206E HOẶC MAT3508}
+\newcommand{\SubmissionDate}{THAY NGÀY NỘP}
+
+\newcommand{\MemberOneGitHub}{THAY TÊN GITHUB}
+\newcommand{\MemberOneName}{THAY NẾU ĐƯỢC YÊU CẦU}
+\newcommand{\MemberOneID}{THAY NẾU ĐƯỢC YÊU CẦU}
+\newcommand{\MemberTwoGitHub}{}
+\newcommand{\MemberTwoName}{}
+\newcommand{\MemberTwoID}{}
+\newcommand{\MemberThreeGitHub}{}
+\newcommand{\MemberThreeName}{}
+\newcommand{\MemberThreeID}{}
+\newcommand{\MemberFourGitHub}{}
+\newcommand{\MemberFourName}{}
+\newcommand{\MemberFourID}{}
+\newcommand{\MemberFiveGitHub}{}
+\newcommand{\MemberFiveName}{}
+\newcommand{\MemberFiveID}{}
+
+\newcommand{\placeholder}[1]{%
+  \par\noindent\fcolorbox{gray!60}{gray!8}{%
+    \parbox{0.94\linewidth}{\textbf{Thay phần hướng dẫn này:} #1}%
+  }\par
+}
+
+\begin{document}
+
+\begin{titlepage}
+  \centering
+  \includegraphics[width=0.22\textwidth]{HUS.png}\par\vspace{1.2cm}
+  {\Large Đại học Quốc gia Hà Nội\\
+   Trường Đại học Khoa học Tự nhiên\par}
+  \vspace{1.6cm}
+  {\Huge\bfseries \ProjectTitle\par}
+  \vspace{0.8cm}
+  {\Large Báo cáo Dự án cuối kỳ\par}
+  \vfill
+
+  \begin{tabular}{>{\bfseries}p{0.29\textwidth}p{0.58\textwidth}}
+    Học phần & \CourseCode{} -- Nhập môn Trí tuệ Nhân tạo \\
+    Năm học & Học kỳ 1, 2026--2027 \\
+    Nhóm & \GroupName \\
+    Ngày nộp & \SubmissionDate \\
+    Kho dự án & \url{THAY_BẰNG_LIÊN_KẾT_KHO_RIÊNG_TƯ} \\
+  \end{tabular}
+
+  \vfill
+  {\small Báo cáo riêng tư có thể chứa thông tin định danh chính thức khi được
+  yêu cầu. Không sao chép mã sinh viên hoặc dữ liệu cá nhân không cần thiết vào
+  issue chủ đề mà cả lớp có thể xem.\par}
+\end{titlepage}
+
+\section*{Thành viên nhóm}
+
+Xóa các dòng trống không dùng. Tên GitHub phải khớp với \texttt{team.json}.
+
+\begin{longtable}{p{0.22\textwidth}p{0.30\textwidth}p{0.20\textwidth}p{0.19\textwidth}}
+\toprule
+\textbf{Tên GitHub} & \textbf{Họ tên chính thức, nếu được yêu cầu} &
+\textbf{Mã sinh viên, nếu được yêu cầu} & \textbf{Đóng góp chính} \\
+\midrule
+\endhead
+\MemberOneGitHub & \MemberOneName & \MemberOneID & THAY NỘI DUNG \\
+\MemberTwoGitHub & \MemberTwoName & \MemberTwoID &  \\
+\MemberThreeGitHub & \MemberThreeName & \MemberThreeID &  \\
+\MemberFourGitHub & \MemberFourName & \MemberFourID &  \\
+\MemberFiveGitHub & \MemberFiveName & \MemberFiveID &  \\
+\bottomrule
+\end{longtable}
+
+\tableofcontents
+\newpage
+
+\section{Tóm tắt dự án}
+\placeholder{Tóm tắt bài toán, phương pháp, kết quả chính và kết luận chính.}
+
+\section{Bài toán, động lực và phạm vi}
+\placeholder{Nêu bài toán, ý nghĩa, phạm vi dự án đã được phê duyệt và những mục tiêu nhóm chủ động không cam kết.}
+
+\section{Bối cảnh và công trình liên quan}
+\placeholder{Giải thích các khái niệm cần thiết và so sánh với công trình liên quan. Chỉ trích dẫn nguồn đã thực sự tham khảo.}
+
+\section{Phương pháp}
+\placeholder{Mô tả và giải thích phương pháp, giả định, dữ liệu, đường cơ sở và cách đánh giá.}
+
+\section{Triển khai và khả năng tái tạo}
+\placeholder{Mô tả hệ thống, cấu trúc kho, phụ thuộc, đầu vào, đầu ra và các bước tái tạo kết quả chính. Liên kết chi tiết tới \texttt{project/README.md} và \texttt{docs/EXTERNAL\_RESOURCES.md}.}
+
+\section{Kết quả và thảo luận}
+\placeholder{Trình bày kết quả bằng hình, bảng, ví dụ hoặc phép đo phù hợp. Phân tích cả kết quả tích cực và tiêu cực, không kết luận vượt quá minh chứng.}
+
+\section{Giới hạn}
+\placeholder{Nêu các giới hạn kỹ thuật, dữ liệu, đánh giá, tài nguyên, đạo đức, riêng tư, an toàn hoặc giấy phép có ảnh hưởng đáng kể.}
+
+\section{Thay đổi so với đề xuất đã được phê duyệt}
+\placeholder{Giải thích mọi thay đổi quan trọng và nêu commit cập nhật đã được phê duyệt. Nếu không có thay đổi quan trọng, ghi rõ điều đó.}
+
+\section{Đóng góp, sử dụng AI và tài nguyên bên ngoài}
+\placeholder{Tóm tắt các bản khai trong \texttt{docs/CONTRIBUTIONS.md}, \texttt{docs/AI\_USAGE.md} và \texttt{docs/EXTERNAL\_RESOURCES.md}. Các tệp chi tiết vẫn là nguồn chính thức.}
+
+\section{Kết luận}
+\placeholder{Tóm tắt kết quả đạt được, điều đã học và các kết luận được minh chứng hỗ trợ.}
+
+\section*{Tài liệu tham khảo}
+\addcontentsline{toc}{section}{Tài liệu tham khảo}
+
+Thay đoạn này bằng danh mục tài liệu phù hợp với dự án. Mỗi tài liệu phải có
+thật, truy cập được và đã được sử dụng. Không để lại tên tác giả, tiêu đề, hội
+nghị, URL hoặc DOI mẫu trong báo cáo cuối cùng.
+
+% Ví dụ dưới đây chỉ là khung định dạng có nhãn rõ ràng:
+% \begin{thebibliography}{9}
+% \bibitem{thay-khoa}
+% THAY TÁC GIẢ, \emph{THAY TIÊU ĐỀ THẬT}, THAY NƠI CÔNG BỐ/NĂM,
+% \url{THAY URL HOẶC DOI ĐÃ KIỂM TRA}.
+% \end{thebibliography}
+
+\appendix
+\section{Phụ lục tùy chọn}
+\placeholder{Chỉ đưa tài liệu bổ sung hữu ích, ví dụ kết quả bổ sung, hướng dẫn hoặc chi tiết kỹ thuật ngắn gọn.}
+
+\end{document}

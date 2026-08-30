@@ -1,0 +1,156 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\geometry{margin=2.5cm}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue,
+  pdftitle={Introduction to AI Final-Project Report}
+}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+\renewcommand{\arraystretch}{1.2}
+
+% -----------------------------------------------------------------------------
+% Replace these placeholders. Keep the course as MAT1206E or MAT3508.
+% Official names and student IDs are private-report fields. Complete them only
+% when the instructor's final identity policy requires them.
+% -----------------------------------------------------------------------------
+\newcommand{\ProjectTitle}{REPLACE PROJECT TITLE}
+\newcommand{\GroupName}{REPLACE GROUP NAME}
+\newcommand{\CourseCode}{REPLACE WITH MAT1206E OR MAT3508}
+\newcommand{\SubmissionDate}{REPLACE SUBMISSION DATE}
+
+\newcommand{\MemberOneGitHub}{REPLACE GITHUB USERNAME}
+\newcommand{\MemberOneName}{REPLACE IF REQUIRED}
+\newcommand{\MemberOneID}{REPLACE IF REQUIRED}
+\newcommand{\MemberTwoGitHub}{}
+\newcommand{\MemberTwoName}{}
+\newcommand{\MemberTwoID}{}
+\newcommand{\MemberThreeGitHub}{}
+\newcommand{\MemberThreeName}{}
+\newcommand{\MemberThreeID}{}
+\newcommand{\MemberFourGitHub}{}
+\newcommand{\MemberFourName}{}
+\newcommand{\MemberFourID}{}
+\newcommand{\MemberFiveGitHub}{}
+\newcommand{\MemberFiveName}{}
+\newcommand{\MemberFiveID}{}
+
+\newcommand{\placeholder}[1]{%
+  \par\noindent\fcolorbox{gray!60}{gray!8}{%
+    \parbox{0.94\linewidth}{\textbf{Replace this guidance:} #1}%
+  }\par
+}
+
+\begin{document}
+
+\begin{titlepage}
+  \centering
+  \includegraphics[width=0.22\textwidth]{HUS.png}\par\vspace{1.2cm}
+  {\Large Vietnam National University, Hanoi\\
+   University of Science\par}
+  \vspace{1.6cm}
+  {\Huge\bfseries \ProjectTitle\par}
+  \vspace{0.8cm}
+  {\Large Final-Project Report\par}
+  \vfill
+
+  \begin{tabular}{>{\bfseries}p{0.29\textwidth}p{0.58\textwidth}}
+    Course & \CourseCode{} -- Introduction to Artificial Intelligence \\
+    Academic year & Semester 1, 2026--2027 \\
+    Group & \GroupName \\
+    Submission date & \SubmissionDate \\
+    Repository & \url{REPLACE_WITH_PRIVATE_REPOSITORY_URL} \\
+  \end{tabular}
+
+  \vfill
+  {\small The private report may contain official identity fields when required.
+  Do not copy student IDs or other unnecessary personal data into the class-visible
+  topic issue.\par}
+\end{titlepage}
+
+\section*{Team members}
+
+Delete unused empty rows. The GitHub usernames must agree with \texttt{team.json}.
+
+\begin{longtable}{p{0.22\textwidth}p{0.30\textwidth}p{0.20\textwidth}p{0.19\textwidth}}
+\toprule
+\textbf{GitHub username} & \textbf{Official name, if required} &
+\textbf{Student ID, if required} & \textbf{Main contribution} \\
+\midrule
+\endhead
+\MemberOneGitHub & \MemberOneName & \MemberOneID & REPLACE \\
+\MemberTwoGitHub & \MemberTwoName & \MemberTwoID &  \\
+\MemberThreeGitHub & \MemberThreeName & \MemberThreeID &  \\
+\MemberFourGitHub & \MemberFourName & \MemberFourID &  \\
+\MemberFiveGitHub & \MemberFiveName & \MemberFiveID &  \\
+\bottomrule
+\end{longtable}
+
+\tableofcontents
+\newpage
+
+\section{Executive summary}
+\placeholder{Summarize the problem, approach, principal results, and main conclusion.}
+
+\section{Problem, motivation, and scope}
+\placeholder{State the problem, why it matters, the approved project scope, and important non-goals.}
+
+\section{Background and related work}
+\placeholder{Explain the required concepts and compare the project with relevant prior work. Cite only sources actually consulted.}
+
+\section{Methodology}
+\placeholder{Describe and justify the methods, assumptions, data, baselines, and evaluation choices.}
+
+\section{Implementation and reproducibility}
+\placeholder{Describe the system and repository structure, dependencies, inputs, outputs, and the steps needed to reproduce the main result. Link details to \texttt{project/README.md} and \texttt{docs/EXTERNAL\_RESOURCES.md}.}
+
+\section{Results and discussion}
+\placeholder{Present the results with appropriate figures, tables, examples, or measurements. Interpret positive and negative results without making claims beyond the evidence.}
+
+\section{Limitations}
+\placeholder{State technical, data, evaluation, resource, ethical, privacy, safety, or licensing limitations that materially affect the project.}
+
+\section{Changes from the approved proposal}
+\placeholder{Explain every material change and identify the approved update commit. If no material change occurred, state that explicitly.}
+
+\section{Contributions, AI use, and external resources}
+\placeholder{Summarize the declarations in \texttt{docs/CONTRIBUTIONS.md}, \texttt{docs/AI\_USAGE.md}, and \texttt{docs/EXTERNAL\_RESOURCES.md}. The detailed files remain authoritative.}
+
+\section{Conclusion}
+\placeholder{Summarize what was achieved, what was learned, and which conclusions are supported by the submitted evidence.}
+
+\section*{References}
+\addcontentsline{toc}{section}{References}
+
+Replace this paragraph with the bibliography style appropriate for the project.
+Every reference must be real, retrievable, and actually used. Do not leave sample
+authors, titles, venues, URLs, or DOI values in the final report.
+
+% Example of a clearly marked citation format placeholder only:
+% \begin{thebibliography}{9}
+% \bibitem{replace-key}
+% REPLACE AUTHOR(S), \emph{REPLACE REAL TITLE}, REPLACE VENUE/YEAR,
+% \url{REPLACE VERIFIED URL OR DOI}.
+% \end{thebibliography}
+
+\appendix
+\section{Optional appendices}
+\placeholder{Include only useful supplementary material, such as additional results, instructions, or concise technical details.}
+
+\end{document}
