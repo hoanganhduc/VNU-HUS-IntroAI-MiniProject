@@ -24,11 +24,12 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.65em}
 \renewcommand{\arraystretch}{1.2}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
 
 % -----------------------------------------------------------------------------
 % Thay các trường dưới đây. Mã học phần là MAT1206E hoặc MAT3508.
-% Họ tên chính thức và mã sinh viên chỉ nằm trong báo cáo riêng tư khi chính
-% sách cuối cùng của giảng viên yêu cầu.
+% Họ tên chính thức, mã sinh viên và tên GitHub là các trường bắt buộc trong
+% báo cáo riêng tư đối với mọi thành viên. Chỉ xóa các dòng thành viên không dùng.
 % -----------------------------------------------------------------------------
 \newcommand{\ProjectTitle}{THAY TÊN DỰ ÁN}
 \newcommand{\GroupName}{THAY TÊN NHÓM}
@@ -36,8 +37,8 @@
 \newcommand{\SubmissionDate}{THAY NGÀY NỘP}
 
 \newcommand{\MemberOneGitHub}{THAY TÊN GITHUB}
-\newcommand{\MemberOneName}{THAY NẾU ĐƯỢC YÊU CẦU}
-\newcommand{\MemberOneID}{THAY NẾU ĐƯỢC YÊU CẦU}
+\newcommand{\MemberOneName}{THAY HỌ TÊN CHÍNH THỨC}
+\newcommand{\MemberOneID}{THAY MÃ SINH VIÊN}
 \newcommand{\MemberTwoGitHub}{}
 \newcommand{\MemberTwoName}{}
 \newcommand{\MemberTwoID}{}
@@ -79,19 +80,19 @@
   \end{tabular}
 
   \vfill
-  {\small Báo cáo riêng tư có thể chứa thông tin định danh chính thức khi được
-  yêu cầu. Không sao chép mã sinh viên hoặc dữ liệu cá nhân không cần thiết vào
-  issue chủ đề mà cả lớp có thể xem.\par}
+  {\small Báo cáo riêng tư phải chứa họ tên chính thức, mã sinh viên và tên
+  GitHub của mọi thành viên. Không sao chép họ tên chính thức, mã sinh viên hoặc
+  dữ liệu cá nhân không cần thiết vào issue chủ đề mà cả lớp có thể xem.\par}
 \end{titlepage}
 
 \section*{Thành viên nhóm}
 
 Xóa các dòng trống không dùng. Tên GitHub phải khớp với \texttt{team.json}.
 
-\begin{longtable}{p{0.22\textwidth}p{0.30\textwidth}p{0.20\textwidth}p{0.19\textwidth}}
+\begin{longtable}{@{}P{0.19\textwidth}P{0.27\textwidth}P{0.17\textwidth}P{0.25\textwidth}@{}}
 \toprule
-\textbf{Tên GitHub} & \textbf{Họ tên chính thức, nếu được yêu cầu} &
-\textbf{Mã sinh viên, nếu được yêu cầu} & \textbf{Đóng góp chính} \\
+\textbf{Tên GitHub} & \textbf{Họ tên chính thức} &
+\textbf{Mã sinh viên} & \textbf{Đóng góp chính} \\
 \midrule
 \endhead
 \MemberOneGitHub & \MemberOneName & \MemberOneID & THAY NỘI DUNG \\
@@ -109,7 +110,7 @@ Xóa các dòng trống không dùng. Tên GitHub phải khớp với \texttt{te
 \placeholder{Tóm tắt bài toán, phương pháp, kết quả chính và kết luận chính.}
 
 \section{Bài toán, động lực và phạm vi}
-\placeholder{Nêu bài toán, ý nghĩa, phạm vi dự án đã được phê duyệt và những mục tiêu nhóm chủ động không cam kết.}
+\placeholder{Nêu bài toán, ý nghĩa, phạm vi đã ghi trong đề xuất nộp và những mục tiêu nhóm chủ động không cam kết.}
 
 \section{Bối cảnh và công trình liên quan}
 \placeholder{Giải thích các khái niệm cần thiết và so sánh với công trình liên quan. Chỉ trích dẫn nguồn đã thực sự tham khảo.}
@@ -126,8 +127,8 @@ Xóa các dòng trống không dùng. Tên GitHub phải khớp với \texttt{te
 \section{Giới hạn}
 \placeholder{Nêu các giới hạn kỹ thuật, dữ liệu, đánh giá, tài nguyên, đạo đức, riêng tư, an toàn hoặc giấy phép có ảnh hưởng đáng kể.}
 
-\section{Thay đổi so với đề xuất đã được phê duyệt}
-\placeholder{Giải thích mọi thay đổi quan trọng và nêu commit cập nhật đã được phê duyệt. Nếu không có thay đổi quan trọng, ghi rõ điều đó.}
+\section{Thay đổi so với đề xuất đã nộp}
+\placeholder{Giải thích mọi thay đổi quan trọng và nêu commit cập nhật đề xuất liên quan. Nếu không có thay đổi quan trọng, ghi rõ điều đó.}
 
 \section{Đóng góp, sử dụng AI và tài nguyên bên ngoài}
 \placeholder{Tóm tắt các bản khai trong \texttt{docs/CONTRIBUTIONS.md}, \texttt{docs/AI\_USAGE.md} và \texttt{docs/EXTERNAL\_RESOURCES.md}. Các tệp chi tiết vẫn là nguồn chính thức.}

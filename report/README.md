@@ -5,29 +5,30 @@ Choose one source template:
 - [`main-en.tex`](main-en.tex) for English;
 - [`main-vi.tex`](main-vi.tex) for Vietnamese.
 
-### Graphical path
-
-Open the group repository on GitHub and choose **Code → Codespaces**. Open the
-selected `.tex` file, edit it, and use the integrated terminal or a LaTeX editor
-to compile it.
-
-### Terminal path
+Open the private group repository in a local editor or GitHub Codespaces. Fill
+every required identity and project field, delete unused member rows, and compile
+the selected source:
 
 ```bash
 cd report
-latexmk -pdf main-en.tex   # or main-vi.tex
-cp main-en.pdf report.pdf  # or main-vi.pdf
+latexmk -pdf -halt-on-error main-en.tex   # or main-vi.tex
+cp main-en.pdf report.pdf                 # or main-vi.pdf
 ```
 
-The final required file is:
+The required final file is:
 
 ```text
 report/report.pdf
 ```
 
-The report must include a section titled **Changes from the approved proposal**
-or **Thay đổi so với đề xuất đã được phê duyệt**. When no material change
-occurred, state that explicitly.
+The private report must identify every member by official full name, student ID,
+and GitHub username. Those official identity fields must not be copied into the
+class-visible topic issue.
 
-Official names and student IDs, when included on the private report cover, must
-not be copied into the class-visible topic issue.
+The report must include **Changes from the submitted proposal** or **Thay đổi so
+với đề xuất đã nộp**. Describe every material change and its relevant proposal
+commit, or state explicitly that no material change occurred.
+
+Use only real sources actually consulted. Do not leave sample identities,
+fabricated authors, titles, venues, URLs, DOI values, datasets, metrics, or
+results in the final report.

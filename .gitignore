@@ -25,3 +25,9 @@ __pycache__/
 Thumbs.db
 *.swp
 *~
+
+# Report/slide build PDFs; keep only the required canonical deliverables.
+report/*.pdf
+!report/report.pdf
+slides/*.pdf
+!slides/slides.pdf

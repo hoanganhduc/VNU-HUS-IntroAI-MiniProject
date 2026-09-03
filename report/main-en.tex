@@ -24,11 +24,12 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.65em}
 \renewcommand{\arraystretch}{1.2}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
 
 % -----------------------------------------------------------------------------
 % Replace these placeholders. Keep the course as MAT1206E or MAT3508.
-% Official names and student IDs are private-report fields. Complete them only
-% when the instructor's final identity policy requires them.
+% Official names, student IDs, and GitHub usernames are required private-report
+% fields for every listed member. Delete only the unused member rows.
 % -----------------------------------------------------------------------------
 \newcommand{\ProjectTitle}{REPLACE PROJECT TITLE}
 \newcommand{\GroupName}{REPLACE GROUP NAME}
@@ -36,8 +37,8 @@
 \newcommand{\SubmissionDate}{REPLACE SUBMISSION DATE}
 
 \newcommand{\MemberOneGitHub}{REPLACE GITHUB USERNAME}
-\newcommand{\MemberOneName}{REPLACE IF REQUIRED}
-\newcommand{\MemberOneID}{REPLACE IF REQUIRED}
+\newcommand{\MemberOneName}{REPLACE OFFICIAL FULL NAME}
+\newcommand{\MemberOneID}{REPLACE STUDENT ID}
 \newcommand{\MemberTwoGitHub}{}
 \newcommand{\MemberTwoName}{}
 \newcommand{\MemberTwoID}{}
@@ -79,19 +80,19 @@
   \end{tabular}
 
   \vfill
-  {\small The private report may contain official identity fields when required.
-  Do not copy student IDs or other unnecessary personal data into the class-visible
-  topic issue.\par}
+  {\small The private report contains the required official full name, student ID,
+  and GitHub username for every member. Do not copy official names, student IDs, or
+  other unnecessary personal data into the class-visible topic issue.\par}
 \end{titlepage}
 
 \section*{Team members}
 
 Delete unused empty rows. The GitHub usernames must agree with \texttt{team.json}.
 
-\begin{longtable}{p{0.22\textwidth}p{0.30\textwidth}p{0.20\textwidth}p{0.19\textwidth}}
+\begin{longtable}{@{}P{0.19\textwidth}P{0.27\textwidth}P{0.17\textwidth}P{0.25\textwidth}@{}}
 \toprule
-\textbf{GitHub username} & \textbf{Official name, if required} &
-\textbf{Student ID, if required} & \textbf{Main contribution} \\
+\textbf{GitHub username} & \textbf{Official full name} &
+\textbf{Student ID} & \textbf{Main contribution} \\
 \midrule
 \endhead
 \MemberOneGitHub & \MemberOneName & \MemberOneID & REPLACE \\
@@ -109,7 +110,7 @@ Delete unused empty rows. The GitHub usernames must agree with \texttt{team.json
 \placeholder{Summarize the problem, approach, principal results, and main conclusion.}
 
 \section{Problem, motivation, and scope}
-\placeholder{State the problem, why it matters, the approved project scope, and important non-goals.}
+\placeholder{State the problem, why it matters, the scope recorded in the submitted proposal, and important non-goals.}
 
 \section{Background and related work}
 \placeholder{Explain the required concepts and compare the project with relevant prior work. Cite only sources actually consulted.}
@@ -126,8 +127,8 @@ Delete unused empty rows. The GitHub usernames must agree with \texttt{team.json
 \section{Limitations}
 \placeholder{State technical, data, evaluation, resource, ethical, privacy, safety, or licensing limitations that materially affect the project.}
 
-\section{Changes from the approved proposal}
-\placeholder{Explain every material change and identify the approved update commit. If no material change occurred, state that explicitly.}
+\section{Changes from the submitted proposal}
+\placeholder{Explain every material change and identify the relevant proposal-update commit. If no material change occurred, state that explicitly.}
 
 \section{Contributions, AI use, and external resources}
 \placeholder{Summarize the declarations in \texttt{docs/CONTRIBUTIONS.md}, \texttt{docs/AI\_USAGE.md}, and \texttt{docs/EXTERNAL\_RESOURCES.md}. The detailed files remain authoritative.}
