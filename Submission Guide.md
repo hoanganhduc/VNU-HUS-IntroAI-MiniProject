@@ -2,70 +2,71 @@
 
 [English](#english) | [Tiếng Việt](#tiếng-việt)
 
-The browser path is shown first. The CLI commands are equivalent or provide the
-required fallback when Classroom50 has no browser action. Classroom50 creates
-and displays assignments; GitHub hosts repositories, Issues, Pull Requests,
-Codespaces, and commits; Git records file history.
-
-Screenshots are added only after pilot verification. Until then, use the exact
-button labels and text paths below. See the
-[screenshot checklist](docs/images/classroom50/README.md).
+This guide covers the complete manually graded group-project workflow. Classroom50
+creates one empty private repository per group. GitHub stores the work and the
+class-visible topic record. Classroom50 does not grade this assignment.
 
 ## English
 
-## 1. Purpose and authoritative rules
+### 1. Understand the workflow
 
-- One founder accepts one Classroom50 group assignment.
-- The group contains one to five students from the same course.
-- The same private repository is used for proposal, development, report, slides,
-  and final submission.
-- The proposal is required but ungraded.
-- The final project has no autograder, automatic score, Feedback PR, scored
-  Release, or `gh student submit` step.
-- An exact Git commit URL plus the GitHub issue or comment timestamp identifies
-  each submitted milestone.
-- The final score is assigned manually using the published 5+3 rubric. Slides
-  is a shared group score; Oral presentation and Q&A are individual scores.
-- When multiple teachers grade, each teacher provides one complete score out of
-  100 for each student, and the final score is the arithmetic mean of those
-  complete scores. No rubric component or subtotal is averaged separately.
+The group uses three connected records:
 
-## 2. Calendar
+1. one private Classroom50 project repository for identities, proposal, code,
+   report, slides, and declarations;
+2. one exact proposal commit in that repository; and
+3. one canonical issue in the correct course topic board for the class-visible
+   summary, exact-duplicate status, updates, scheduling, and final commit URL.
+
+The proposal is required but ungraded. The optional local checker assigns no
+points and does not certify feasibility, correctness, or quality. Final marks are
+assigned manually using [`Rubrics.md`](Rubrics.md).
+
+### 2. Record the calendar
 
 | Milestone | Date and time (ICT, UTC+7) |
 |---|---|
 | Project materials released | 2026-09-04 13:00 |
 | Classroom50 acceptance opens | 2026-09-11 13:00 |
 | Recommended group-formation target | 2026-09-13 23:59 |
-| Initial proposal issue due | 2026-09-20 23:59 |
+| Initial proposal commit and canonical issue due | 2026-09-20 23:59 |
+| Exact-duplicate check completed | 2026-09-25 |
 | Exact-duplicate correction due | 2026-09-27 23:59 |
-| Final commit and issue comment due | 2026-11-04 23:59 |
+| Final commit and `FINAL SUBMISSION` comment due | 2026-11-04 23:59 |
 | Presentations begin | 2026-11-06 |
 
-The final deadline is common to every group and does not depend on presentation
-order.
+The final deadline is common to all groups and is not extended by presentation
+order, proposal updates, or a change of selected problem.
 
-## 3. Before accepting the assignment
+### 3. Form the group and choose roles
 
-1. Agree on the final group membership and one founder.
-2. Confirm that every member belongs to the same course.
-3. Review existing proposals on the class topic-board Issues page.
-4. Decide which single student will accept.
+Before anyone accepts the assignment:
 
-> **Only the founder accepts.** Other members must not accept separately, because
-> that may create duplicate project repositories.
+1. agree on one to five members from the same course;
+2. verify every member's GitHub username;
+3. choose exactly one founder;
+4. agree that the founder will perform the initial Classroom50 acceptance and
+   serve as the default topic-issue custodian; and
+5. review existing topics on the correct course board.
 
-## 4. Accept and bootstrap the empty repository
+Only the founder accepts. Other members must not accept separately, because each
+acceptance can create a different repository.
 
-### Classroom50 graphical path
+The founder is an administrative representative. The founder cannot
+unilaterally choose or change the group, selected problem, scope, proposal, or
+submitted commit. Every listed member must agree to those decisions.
 
-1. Open the final-project assignment link supplied for the course.
-2. Choose **Sign in with GitHub** at <https://classroom50.org>.
+### 4. Accept and bootstrap the empty repository
+
+#### Classroom50 graphical path
+
+1. Open the course's final-project acceptance link.
+2. Sign in to Classroom50 with GitHub.
 3. Open the VNU-HUS organization marked **Student**.
 4. Open `final-project` and choose **Accept**.
-5. Follow the repository link displayed after acceptance.
+5. Follow the resulting link to the private GitHub repository.
 
-### CLI alternative
+#### CLI alternative
 
 ```bash
 gh student accept VNU-HUS <classroom> final-project
@@ -73,16 +74,9 @@ gh student accept VNU-HUS <classroom> final-project
 
 Use one acceptance route, not both.
 
-The Classroom50 repository is intentionally empty. It has no template files or
-autograding configuration. The founder copies the reviewed public starter into
-the accepted repository.
-
-### Graphical development environment
-
-On the accepted GitHub repository, choose **Code → Codespaces**. A terminal is
-still needed for the initial remote setup below.
-
-### Reproducible terminal bootstrap
+The accepted repository is intentionally empty. Clone the reviewed public
+starter, rename its original remote to `starter`, and add the empty assignment
+repository as `origin`:
 
 ```bash
 git clone https://github.com/VNU-HUS/introai-final-project-template.git final-project
@@ -92,162 +86,204 @@ git remote rename origin starter
 git remote add origin <CLASSROOM50_ASSIGNMENT_REPOSITORY_URL>
 
 git remote -v
+git ls-remote --heads origin
 git push -u origin HEAD:main
 ```
 
-Before pushing, verify that:
+Before the first push, verify:
 
 ```text
-starter → VNU-HUS/introai-final-project-template
-origin  → the group's private Classroom50 repository
+starter -> VNU-HUS/introai-final-project-template
+origin  -> this group's empty private Classroom50 repository
 ```
 
-After this push, the other members open or clone the Classroom50 repository.
+`git ls-remote --heads origin` should show no unexpected branch. Never push to
+`starter`, never use the canonical source repository as `origin`, and never reuse
+a repository from the other course.
 
-## 5. Record and verify the group
+### 5. Add members and record private identity
 
-### Classroom50 graphical path
+In Classroom50, open the accepted assignment, use the edit pencil, choose
+**Manage collaborators**, and add the other zero to four agreed members. A
+one-person group adds nobody.
 
-1. Open the accepted assignment.
-2. Use the edit pencil near the top-right.
-3. Choose **Manage collaborators**.
-4. Add the other enrolled GitHub usernames. A one-person group adds nobody.
-
-### CLI alternative
+CLI alternative for one member:
 
 ```bash
-gh student invite \
-  VNU-HUS/<assignment-repository> \
-  <github-username>
+gh student invite VNU-HUS/<assignment-repository> <github-username>
 ```
 
-Complete `team.json` with:
+An empty repository has no `.classroom50.yaml`, so CLI or direct GitHub
+invitations may not enforce the configured maximum. The group and staff must
+compare the actual collaborators with `team.json`; the total must remain one to
+five, including the founder.
+
+Fill the private `team.json` with:
 
 - `MAT1206E` or `MAT3508`;
-- the group name;
-- the founder's GitHub username;
-- one to five distinct GitHub usernames.
+- group name;
+- founder's GitHub username; and
+- one to five member objects, each containing official full name, student ID,
+  and GitHub username.
 
-Compare `team.json` with the collaborators shown by Classroom50 or GitHub. Do
-not place student IDs, email addresses, phone numbers, credentials, or private
-keys in the class-visible topic issue.
+Put the same identity triplets in the private root README and final report. The
+class-visible topic issue uses GitHub usernames only.
 
-## 6. Prepare the initial proposal
+### 6. Study the worked example
 
-### GitHub graphical path
+Open [`examples/topic-proposal/README.md`](examples/topic-proposal/README.md)
+with the whole group before editing the real files. It links:
 
-Open the repository and choose **Code → Codespaces**, or use the GitHub web
-editor, to edit:
+- a filled private membership record;
+- a complete proposal covering every required field; and
+- the corresponding class-visible issue.
+
+Every identity, identifier, repository, commit, and result in the example is
+fictional. The example is not prior approval, a reserved topic, a guaranteed
+passing proposal, a minimum-quality benchmark, or text that may be submitted
+verbatim.
+
+Students edit the real root `team.json` and `proposal/proposal.md`; the example
+files remain unchanged as reference material.
+
+### 7. Prepare the private proposal
+
+Edit:
 
 ```text
 team.json
 proposal/proposal.md
 ```
 
-Students choose and justify their own scope. `Mini-Project Ideas.md` is only an
-optional catalogue; it does not prescribe a minimum project.
+The proposal must state:
 
-### Optional structural self-check
+- project title and topic source;
+- class-visible summary;
+- one exact selected problem;
+- problem and motivation;
+- student-defined scope, explicit non-goals, and feasibility;
+- planned method;
+- data, tools, papers, software, and existing projects;
+- expected output or demonstration;
+- milestones;
+- references actually consulted; and
+- relevant integrity, privacy, safety, and licensing considerations.
+
+`Mini-Project Ideas.md` is optional inspiration. It does not define a minimum
+project and does not remove the group's responsibility to choose a precise,
+feasible problem.
+
+Complete the checklist at the end of `proposal/proposal.md`. The exact proposal
+commit must represent what every listed member agreed to.
+
+### 8. Self-check, commit, and identify the proposal version
+
+Run the optional structural check:
 
 ```bash
 python3 check_project_files.py proposal
 ```
 
-This command produces no score, does not judge correctness, and does not approve
-the topic.
+The command checks schema, required fields, placeholders, and prohibited
+Classroom50 grading controls. It does not contact GitHub, run project code, judge
+the topic, or assign a score.
 
-### Commit the proposal
+After all members review the files:
 
 ```bash
-git add team.json proposal/proposal.md
+git status
+git add team.json proposal/proposal.md README.md
+git diff --cached
 git commit -m "Submit topic proposal"
 git push
 git rev-parse HEAD
 ```
 
-Copy the complete 40-character SHA or permanent GitHub commit URL.
+Copy the permanent GitHub commit URL or complete 40-character SHA. A branch URL,
+file URL without a commit, screenshot, or latest-branch link does not identify an
+immutable proposal version.
 
-## 7. Open the one class-visible topic issue
+### 9. Find or open the canonical topic issue
 
-### GitHub graphical path
+Before creating anything, search the correct course topic board for:
 
-1. Open the topic-board repository for the correct course.
-2. Choose **Issues → New issue → Project topic proposal**.
-3. Use the title:
+1. the exact Classroom50 group-repository URL; and
+2. the founder's GitHub username.
 
-   ```text
-   [Proposal] <group name> — <project title>
-   ```
+If a valid issue for the repository already exists, it is the canonical issue.
+Continue there and do not create another issue.
 
-4. Complete the Issue Form and paste the exact proposal commit URL.
-5. Submit the issue.
+Otherwise, after every member agrees to the proposal commit, the founder as
+default issue custodian:
 
-### CLI alternative
+1. opens **Issues -> New issue -> Project topic proposal**;
+2. uses `[Proposal] <group name> — <project title>` as the title;
+3. completes every required field;
+4. lists GitHub usernames only;
+5. pastes the exact group-repository URL and proposal commit URL or SHA; and
+6. submits the issue.
 
-The graphical Issue Form is preferred because it enforces the required fields.
-When a tested Markdown fallback form is supplied, `gh issue create` may be used
-with that exact body template.
+The earliest valid issue by GitHub creation time for the exact group-repository
+URL is canonical. A valid issue is on the correct course board, supplies every
+required field, names the actual project repository, and links a proposal commit
+from that repository. Validity is evaluated when staff first process competing
+issues. Once staff records which issue is canonical, that choice is stable; an
+earlier incomplete issue repaired later does not displace it.
 
-The issue body is a class-visible summary and discussion record. The linked
-private commit is the authoritative full proposal. Use one issue for the entire
-project; do not open a second proposal issue for a revision.
-
-## 8. Read and respond to proposal review
-
-Staff use these labels:
-
-```text
-status: pending
-status: revision-required
-status: approved
-status: rejected
-```
-
-Silence is not approval. Approval exists only when an instructor comment names
-the approved commit SHA.
-
-When revision is required:
-
-1. edit the same proposal file;
-2. create and push a new commit;
-3. comment on the same issue with the new commit URL.
-
-Beginning substantial implementation before approval is at the group's risk.
-
-## 9. Update an approved proposal
-
-Minor implementation refinements normally require no formal update, such as:
-
-- changing a library or programming language;
-- adjusting parameters or internal implementation details;
-- improving visualizations;
-- adding experiments;
-- adjusting internal milestones.
-
-Material changes require instructor approval, including changes to the main
-problem, domain, principal dataset, principal method, expected output,
-substantial scope, important privacy/licensing/safety assumptions, or group
-membership.
-
-For a material change:
-
-```bash
-git add proposal/proposal.md team.json
-git commit -m "Update project proposal"
-git push
-git rev-parse HEAD
-```
-
-Comment on the existing topic issue:
+If a later duplicate issue is opened for the same repository, stop using it.
+Staff comment:
 
 ```text
-PROPOSAL UPDATE REQUEST
+Duplicate of #<canonical-issue-number>
 
-Previous approved commit:
+Continue all proposal updates, scheduling, and final submission in the original issue.
+```
+
+The later issue is then closed. A duplicate issue is different from a duplicated
+selected problem across two different groups.
+
+### 10. Understand the exact-duplicate status
+
+Canonical issues use only:
+
+```text
+status: submitted
+status: recorded
+status: duplicate-problem
+```
+
+- `status: submitted`: the selected problem awaits comparison with earlier
+  recorded problems.
+- `status: recorded`: staff found no earlier exact duplicate at the time of
+  review. This does not certify scope, feasibility, method, correctness, or
+  expected results.
+- `status: duplicate-problem`: a different group repository already recorded the
+  same exact problem. The group must revise the selected problem in the existing
+  proposal and canonical issue.
+
+A shared broad area, method, dataset family, or application domain is not by
+itself an exact duplicate. When two groups select exactly the same problem, the
+earlier complete canonical issue normally keeps it. The later group posts a
+corrected proposal by 2026-09-27 at 23:59 ICT in the same issue.
+
+### 11. Update the proposal
+
+The proposal is a living plan. The group may change scope, method, data, tools,
+implementation, expected output, or ambition without seeking academic
+certification. Explain material changes in the final report.
+
+Commit every proposal revision and comment in the canonical issue:
+
+```text
+PROPOSAL UPDATE
+
+Previous proposal commit:
 <old commit URL or SHA>
 
-Proposed new commit:
+New proposal commit:
 <new commit URL or SHA>
+
+Selected problem changed: yes/no
 
 Summary of changes:
 - ...
@@ -256,42 +292,65 @@ Reason for the changes:
 - ...
 ```
 
-When membership changes, list the usernames to add or remove. Staff apply
-`status: update-pending`. The previous approved commit remains authoritative
-until the instructor posts:
+When the exact selected problem changes, staff temporarily return the issue to
+`status: submitted` and repeat only the exact-duplicate check. Other proposal
+changes need no new status. No update extends the common final deadline.
+
+### 12. Change membership or issue custodian
+
+Membership changes are administrative exceptions. Update `team.json`, commit the
+change, and post in the canonical issue:
 
 ```text
-APPROVED UPDATE
+MEMBERSHIP CHANGE REQUEST
 
-This proposal supersedes:
-<old commit SHA>
+Current members:
+- ...
 
-Approved proposal commit:
-<new commit SHA>
+Proposed members:
+- ...
+
+Reason:
+- ...
+
+Commit updating team.json:
+<commit URL or SHA>
 ```
 
-There is no separate topic-change cutoff. When the selected problem changes,
-the group updates the same proposal issue immediately. A topic change does not
-extend the common final deadline.
+The membership change takes effect only after explicit instructor confirmation.
+Keep all members in one course and keep the group size between one and five.
 
-## 10. Develop the project
-
-Recommended graphical workflow:
+When the founder cannot continue as issue custodian, the group may record one
+handover without opening another issue:
 
 ```text
-GitHub Issue
-→ feature branch
-→ commit and push
-→ Pull Request
-→ review
-→ merge
+ISSUE CUSTODIAN HANDOVER
+
+Previous custodian: @...
+New custodian: @...
+All listed members agree: yes
+Reason: ...
 ```
 
-Equivalent terminal work may use ordinary `git` and `gh` commands. Commit count,
-Pull Request count, lines changed, and GitHub activity volume do not directly
-produce points.
+A custodian handover does not alter the founder recorded as the student who
+accepted the assignment, and it gives no member unilateral authority over the
+project.
 
-Maintain during development:
+### 13. Develop the project
+
+Use ordinary Git and GitHub collaboration:
+
+```bash
+git switch -c <short-purpose-branch>
+git add <paths>
+git commit -m "Describe the project change"
+git push -u origin <short-purpose-branch>
+```
+
+Pull requests and peer review are recommended for multi-person groups. Commit
+counts, pull-request counts, and lines changed are evidence, not point formulas.
+
+Maintain throughout the project:
 
 ```text
 project/README.md
@@ -300,14 +359,13 @@ docs/AI_USAGE.md
 docs/EXTERNAL_RESOURCES.md
 ```
 
-Do not commit passwords, tokens, private keys, private personal data, pirated
-datasets, or unnecessary large binaries. Document external data, models,
-services, licenses, access instructions, preprocessing, and reproduction limits
-in `docs/EXTERNAL_RESOURCES.md`.
+Do not commit credentials, unnecessary personal data, unlawfully redistributed
+material, or unexplained large dependencies. Record external resources, licenses,
+access conditions, preprocessing, and reproducibility limitations.
 
-## 11. Prepare the final repository
+### 14. Prepare the final repository and report
 
-The final repository contains at least:
+The final commit must include:
 
 ```text
 README.md
@@ -315,190 +373,143 @@ team.json
 proposal/proposal.md
 report/report.pdf
 slides/slides.pdf
-project/README.md and project materials
+project/README.md
 docs/CONTRIBUTIONS.md
 docs/AI_USAGE.md
 docs/EXTERNAL_RESOURCES.md
 ```
 
-The root README links to the report, slides, project materials, and declarations.
-The final report contains **Changes from the approved proposal**. When no
-material change occurred, state that explicitly.
+The private README and report must identify every member by official full name,
+student ID, and GitHub username. Remove unused placeholder rows. The report must
+include **Changes from the submitted proposal** and describe material changes,
+or state that none occurred.
 
-Check every link and reproduction instruction before the final commit.
+Compile the chosen report template and place the result at
+`report/report.pdf`. Place the final presentation at `slides/slides.pdf`.
 
-## 12. Submit the final snapshot
-
-### Optional structural self-check
+Run:
 
 ```bash
 python3 check_project_files.py final
 ```
 
-This produces no score and does not evaluate project quality.
+This remains a no-score structural check. Passing it is not a grade or quality
+judgment.
 
-### Create the final commit
+### 15. Record the final submission and present
+
+After every member agrees to the exact final commit:
 
 ```bash
-git add .
-git commit -m "Submit final project"
+git status
 git push
 git rev-parse HEAD
 ```
 
-### GitHub graphical path to the permanent commit URL
-
-Open the repository, choose **Commits**, open the `Submit final project` commit,
-and copy its permanent URL.
-
-Comment on the existing topic issue no later than 2026-11-04 23:59 ICT:
+Post in the canonical issue by 2026-11-04 at 23:59 ICT:
 
 ```text
 FINAL SUBMISSION
 
-Commit:
-<complete commit URL or 40-character SHA>
+Final commit:
+<permanent commit URL or complete SHA>
+
+Report:
+report/report.pdf at the final commit
+
+Slides:
+slides/slides.pdf at the final commit
+
+All listed members agree to this submitted version: yes
 ```
 
-Do not force-push away, delete, or otherwise make the submitted commit
-unreachable before grading is complete.
+Do not create a new issue and do not use a Classroom50 grading or submission
+trigger. The issue comment and exact Git commit identify the submitted version.
 
-### Important Classroom50 limitation
+Presentations begin on 2026-11-06. Report and Slides include shared components;
+Oral presentation/time management and Q&A are graded individually as specified in
+the rubric.
 
-Because `final-project` is empty and non-autograded, Classroom50 has no meaningful
-project **View grade** workflow and no browser **Submit** button. The exact GitHub
-commit URL posted in the topic issue is the submission record.
+### 16. Troubleshoot safely
 
-## 13. After the deadline
-
-- Later pushes do not replace the submitted SHA.
-- An exceptionally accepted replacement requires an instructor comment naming
-  the replacement SHA.
-- Late work, extensions, acceptance, rejection, and penalties are manual
-  instructor decisions.
-- The instructor grades the exact linked commit from the repository snapshot.
-
-## 14. Troubleshooting and recovery
-
-### Duplicate repositories or wrong founder
-
-Stop work and contact the instructor. Do not open additional repositories or
-issues while trying to repair the mistake independently.
-
-### Invitation or access failure
-
-Verify the GitHub username, enrollment in the correct organization/classroom,
-and the **Manage collaborators** list. The founder may retry the tested CLI
-invite command.
-
-### Incorrect `origin`
-
-Run:
-
-```bash
-git remote -v
-```
-
-Do not push until `origin` is the group's private Classroom50 repository.
-
-### Secret committed accidentally
-
-Revoke or rotate the credential immediately, then contact the instructor. Merely
-deleting the visible line does not invalidate a leaked secret.
-
-### Oversized file
-
-Remove the unnecessary binary from the pending commit. Store a lawful,
-accessible resource externally and document it in `EXTERNAL_RESOURCES.md`.
-
-### Sixth collaborator or cross-course member
-
-The project group is invalid until staff resolve it. Do not assume that a name
-in `team.json` overrides the actual collaborator list.
-
-### Issue in the wrong course board or wrong SHA
-
-Comment with the correction and notify staff. Do not erase the history unless
-staff explicitly instructs you to do so.
-
-### Pending or rejected proposal near a milestone
-
-Respond in the existing issue and submit the required revision. Silence or an
-unlabelled issue is not approval.
-
-## 15. What is and is not assessed
-
-See [`Rubrics.md`](Rubrics.md).
-
-```text
-Proposal:      required, ungraded
-Report:        60 points, five shared group components
-Presentation:  40 points = shared Slides 12 + individual Oral 12 + individual Q&A 16
-Teacher score: one complete total out of 100 for each student
-Final score:   average of complete teacher totals when multiple teachers grade
-```
-
-Repository presence alone is not correctness. The optional self-check, issue
-labels, commit count, lines changed, and GitHub activity do not directly produce
-points. The instructor manually reviews the exact submitted repository, report,
-slides, presentation or demonstration, Q&A, and demonstrated understanding.
-
----
+- **Several students accepted separately:** stop using the duplicate repositories
+  and contact staff before deleting or moving work. Do not merge identities or
+  history without instructions.
+- **Wrong remote:** do not push. Inspect `git remote -v` and correct the remote
+  only after identifying the intended private group repository.
+- **A canonical issue already exists:** continue in it. Do not open another.
+- **A duplicate-problem status appears:** revise the exact selected problem and
+  proposal, then update the same issue by the correction deadline.
+- **A member changes:** use `MEMBERSHIP CHANGE REQUEST`; do not silently edit the
+  roster.
+- **The founder is unavailable:** record an issue-custodian handover in the same
+  issue.
+- **A large file is unsuitable for Git:** store it lawfully elsewhere and record
+  source, license, retrieval, preprocessing, and reproduction details.
+- **A secret was committed:** revoke it immediately, notify staff when exposure
+  matters, and remove it using an appropriate history-cleanup procedure. A later
+  deletion commit alone does not erase a secret from history.
 
 ## Tiếng Việt
 
-## 1. Mục đích và quy tắc chính thức
+### 1. Hiểu quy trình
 
-- Một thành viên đại diện nhận một bài tập nhóm trên Classroom50.
-- Nhóm có từ một đến năm sinh viên thuộc cùng một học phần.
-- Cùng một kho riêng tư được dùng cho đề xuất, phát triển, báo cáo, slide và nộp
-  cuối kỳ.
-- Đề xuất là bắt buộc nhưng không có điểm riêng.
-- Dự án không có chấm tự động, điểm tự động, Feedback PR, scored Release hoặc
-  bước `gh student submit`.
-- Liên kết commit Git chính xác cùng thời gian của issue hoặc bình luận xác định
-  phiên bản đã nộp.
-- Điểm được chấm thủ công theo thang 5+3 đã công bố. Điểm Slide là điểm
-  chung của nhóm; điểm Trình bày miệng và Hỏi đáp là điểm cá nhân.
-- Khi có nhiều giảng viên chấm, mỗi giảng viên cho một tổng điểm đầy đủ trên 100
-  đối với từng sinh viên; điểm cuối cùng là trung bình cộng của các tổng điểm
-  đầy đủ đó. Không tính trung bình riêng cho thành phần hoặc tổng phần nào.
+Nhóm sử dụng ba hồ sơ liên kết với nhau:
 
-## 2. Lịch
+1. một kho dự án riêng tư do Classroom50 tạo để lưu danh tính, đề xuất, mã nguồn,
+   báo cáo, slide và các bản khai;
+2. một commit đề xuất chính xác trong kho đó; và
+3. một issue chính thức trong kho chủ đề của đúng học phần để lưu tóm tắt mà lớp
+   có thể xem, trạng thái kiểm tra trùng, cập nhật, lịch và URL commit cuối.
+
+Đề xuất là bắt buộc nhưng không có điểm. Công cụ tự kiểm tra cục bộ không cho
+điểm và không chứng nhận tính khả thi, đúng đắn hay chất lượng. Điểm cuối được
+chấm thủ công theo [`Rubrics.md`](Rubrics.md).
+
+### 2. Ghi lại lịch
 
 | Mốc | Thời gian (ICT, UTC+7) |
 |---|---|
 | Công bố tài liệu dự án | 2026-09-04 13:00 |
-| Mở liên kết nhận bài Classroom50 | 2026-09-11 13:00 |
+| Mở nhận bài trên Classroom50 | 2026-09-11 13:00 |
 | Mốc khuyến nghị hoàn thành lập nhóm | 2026-09-13 23:59 |
-| Hạn đăng đề xuất ban đầu | 2026-09-20 23:59 |
+| Hạn commit đề xuất và issue chính thức | 2026-09-20 23:59 |
+| Hoàn thành kiểm tra trùng chính xác | 2026-09-25 |
 | Hạn sửa khi trùng chính xác bài toán | 2026-09-27 23:59 |
-| Hạn commit cuối và bình luận nộp bài | 2026-11-04 23:59 |
+| Hạn commit cuối và bình luận `FINAL SUBMISSION` | 2026-11-04 23:59 |
 | Bắt đầu trình bày | 2026-11-06 |
 
-Hạn cuối giống nhau cho mọi nhóm và không phụ thuộc thứ tự trình bày.
+Hạn cuối chung áp dụng cho mọi nhóm và không thay đổi theo thứ tự trình bày, lần
+cập nhật đề xuất hoặc việc đổi bài toán cụ thể.
 
-## 3. Trước khi nhận bài
+### 3. Lập nhóm và chọn vai trò
 
-1. Thống nhất danh sách nhóm và một thành viên đại diện.
-2. Xác nhận mọi thành viên thuộc cùng học phần.
-3. Xem các đề xuất hiện có trong trang Issues của kho chủ đề lớp.
-4. Chọn đúng một sinh viên thực hiện thao tác nhận bài.
+Trước khi nhận bài:
 
-> **Chỉ thành viên đại diện chọn Accept.** Các thành viên khác không nhận bài
-> riêng, vì có thể tạo các kho trùng lặp.
+1. thống nhất một đến năm thành viên thuộc cùng học phần;
+2. kiểm tra tên GitHub của từng thành viên;
+3. chọn đúng một thành viên đại diện;
+4. thống nhất rằng người này nhận bài lần đầu và mặc định quản lý issue chủ đề;
+5. xem các chủ đề đã có trong kho chủ đề của đúng học phần.
 
-## 4. Nhận bài và đưa mẫu vào kho trống
+Chỉ người đại diện nhận bài. Các thành viên khác không nhận riêng vì mỗi lần nhận
+có thể tạo một kho khác.
 
-### Giao diện Classroom50
+Người đại diện chỉ thực hiện vai trò hành chính. Người này không được tự ý quyết
+định hoặc thay đổi nhóm, bài toán, phạm vi, đề xuất hay commit nộp thay cả nhóm.
+Mọi thành viên được liệt kê phải đồng ý với các quyết định đó.
 
-1. Mở liên kết bài tập dự án của học phần.
-2. Chọn **Sign in with GitHub** tại <https://classroom50.org>.
+### 4. Nhận bài và khởi tạo kho trống
+
+#### Thao tác trên Classroom50
+
+1. Mở liên kết nhận dự án của học phần.
+2. Đăng nhập Classroom50 bằng GitHub.
 3. Mở tổ chức VNU-HUS có nhãn **Student**.
 4. Mở `final-project` và chọn **Accept**.
-5. Theo liên kết tới kho được hiển thị sau khi nhận bài.
+5. Theo liên kết tới kho GitHub riêng tư vừa tạo.
 
-### Lựa chọn CLI
+#### Lựa chọn CLI
 
 ```bash
 gh student accept VNU-HUS <classroom> final-project
@@ -506,15 +517,8 @@ gh student accept VNU-HUS <classroom> final-project
 
 Chỉ dùng một cách nhận bài.
 
-Kho Classroom50 được tạo trống có chủ ý. Thành viên đại diện sao chép mẫu công
-khai đã được kiểm tra vào kho đó.
-
-### Môi trường phát triển đồ họa
-
-Trong kho GitHub, chọn **Code → Codespaces**. Vẫn cần terminal để thiết lập
-remote lần đầu.
-
-### Các lệnh thiết lập có thể tái tạo
+Kho vừa nhận được cố ý để trống. Sao chép starter công khai đã kiểm tra, đổi remote
+ban đầu thành `starter`, rồi thêm kho bài tập trống thành `origin`:
 
 ```bash
 git clone https://github.com/VNU-HUS/introai-final-project-template.git final-project
@@ -524,142 +528,266 @@ git remote rename origin starter
 git remote add origin <CLASSROOM50_ASSIGNMENT_REPOSITORY_URL>
 
 git remote -v
+git ls-remote --heads origin
 git push -u origin HEAD:main
 ```
 
-Trước khi push, kiểm tra:
+Trước lần push đầu, kiểm tra:
 
 ```text
-starter → VNU-HUS/introai-final-project-template
-origin  → kho Classroom50 riêng tư của nhóm
+starter -> VNU-HUS/introai-final-project-template
+origin  -> kho Classroom50 riêng tư và trống của đúng nhóm
 ```
 
-Sau lần push đầu, các thành viên khác mở hoặc clone kho Classroom50.
+`git ls-remote --heads origin` không được có nhánh bất ngờ. Không push vào
+`starter`, không dùng kho nguồn chuẩn làm `origin`, và không dùng lại kho của học
+phần khác.
 
-## 5. Ghi và kiểm tra thành viên nhóm
+### 5. Thêm thành viên và ghi danh tính riêng tư
 
-### Giao diện Classroom50
+Trong Classroom50, mở bài đã nhận, dùng biểu tượng bút chì, chọn **Manage
+collaborators**, rồi thêm từ không đến bốn thành viên còn lại. Nhóm một người
+không thêm ai.
 
-1. Mở bài tập đã nhận.
-2. Dùng biểu tượng bút chì ở phía trên bên phải.
-3. Chọn **Manage collaborators**.
-4. Thêm các tên GitHub còn lại. Nhóm một người không thêm ai.
-
-### Lựa chọn CLI
+Lựa chọn CLI cho một thành viên:
 
 ```bash
-gh student invite \
-  VNU-HUS/<assignment-repository> \
-  <github-username>
+gh student invite VNU-HUS/<assignment-repository> <github-username>
 ```
 
-Điền `team.json` với mã học phần, tên nhóm, thành viên đại diện và từ một đến năm
-tên GitHub khác nhau. So sánh với danh sách collaborator trên Classroom50 hoặc
-GitHub. Không đưa mã sinh viên, email, số điện thoại hoặc thông tin bí mật vào
-issue công khai trong lớp.
+Kho trống không có `.classroom50.yaml`, vì vậy lời mời bằng CLI hoặc trực tiếp
+trên GitHub có thể không thực thi giới hạn số lượng. Nhóm và giảng viên phải so
+sánh collaborator thực tế với `team.json`; tổng số phải từ một đến năm, kể cả
+người đại diện.
 
-## 6. Chuẩn bị đề xuất ban đầu
+Điền `team.json` riêng tư với:
 
-### Giao diện GitHub
+- `MAT1206E` hoặc `MAT3508`;
+- tên nhóm;
+- tên GitHub của người đại diện; và
+- một đến năm đối tượng thành viên, mỗi đối tượng có họ tên chính thức, mã sinh
+  viên và tên GitHub.
 
-Chọn **Code → Codespaces** hoặc dùng trình sửa web để chỉnh:
+Ghi cùng bộ ba danh tính trong README riêng tư và báo cáo cuối. Issue mà lớp có
+thể xem chỉ dùng tên GitHub.
+
+### 6. Xem ví dụ hoàn chỉnh
+
+Cả nhóm mở [`examples/topic-proposal/README.md`](examples/topic-proposal/README.md)
+trước khi sửa tệp thật. Ví dụ liên kết tới:
+
+- hồ sơ thành viên riêng tư đã điền;
+- đề xuất đầy đủ mọi trường bắt buộc; và
+- issue tương ứng mà lớp có thể xem.
+
+Mọi danh tính, mã, kho, commit và kết quả trong ví dụ đều hư cấu. Ví dụ không
+phải là sự chấp thuận trước, chủ đề được giữ chỗ, đề xuất chắc chắn đạt, chuẩn
+chất lượng tối thiểu hoặc văn bản được phép nộp nguyên xi.
+
+Sinh viên sửa `team.json` và `proposal/proposal.md` thật ở gốc kho; các tệp ví dụ
+được giữ nguyên làm tài liệu tham khảo.
+
+### 7. Chuẩn bị đề xuất riêng tư
+
+Sửa:
 
 ```text
 team.json
 proposal/proposal.md
 ```
 
-Sinh viên tự chọn và giải thích phạm vi. `Mini-Project Ideas.md` chỉ là danh sách
-gợi ý, không quy định một dự án tối thiểu.
+Đề xuất phải nêu:
 
-### Tự kiểm tra cấu trúc, không có điểm
+- tên dự án và nguồn chủ đề;
+- tóm tắt công khai trong lớp;
+- một bài toán cụ thể;
+- bài toán và động lực;
+- phạm vi do nhóm xác định, mục tiêu không cam kết và tính khả thi;
+- phương pháp dự kiến;
+- dữ liệu, công cụ, bài báo, phần mềm và dự án có sẵn;
+- đầu ra hoặc phần minh họa dự kiến;
+- các mốc thực hiện;
+- tài liệu đã thực sự tham khảo; và
+- các vấn đề liên quan đến liêm chính, riêng tư, an toàn và giấy phép.
+
+`Mini-Project Ideas.md` chỉ là nguồn gợi ý. Tệp này không quy định dự án tối thiểu
+và không thay trách nhiệm của nhóm trong việc chọn bài toán rõ ràng, khả thi.
+
+Hoàn thành danh sách tự kiểm tra cuối `proposal/proposal.md`. Commit đề xuất phải
+là đúng phiên bản mà mọi thành viên đã thống nhất.
+
+### 8. Tự kiểm tra, tạo commit và xác định phiên bản
+
+Chạy kiểm tra cấu trúc tùy chọn:
 
 ```bash
 python3 check_project_files.py proposal
 ```
 
-Lệnh này không chấm đúng sai và không phê duyệt chủ đề.
+Lệnh kiểm tra schema, trường bắt buộc, chỗ giữ nội dung và tệp điều khiển chấm tự
+động bị cấm. Lệnh không kết nối GitHub, không chạy mã dự án, không đánh giá chủ
+đề và không cho điểm.
 
-### Tạo commit đề xuất
+Sau khi mọi thành viên xem lại:
 
 ```bash
-git add team.json proposal/proposal.md
+git status
+git add team.json proposal/proposal.md README.md
+git diff --cached
 git commit -m "Submit topic proposal"
 git push
 git rev-parse HEAD
 ```
 
-Sao chép SHA đủ 40 ký tự hoặc liên kết commit cố định.
+Sao chép URL commit cố định hoặc SHA đủ 40 ký tự. URL nhánh, URL tệp không gắn
+commit, ảnh chụp hoặc liên kết tới nhánh mới nhất không xác định phiên bản bất
+biến.
 
-## 7. Mở issue chủ đề duy nhất của nhóm
+### 9. Tìm hoặc mở issue chính thức
 
-### Giao diện GitHub
+Trước khi tạo issue, tìm trong kho chủ đề của đúng học phần theo:
 
-1. Mở kho chủ đề của đúng học phần.
-2. Chọn **Issues → New issue → Project topic proposal**.
-3. Dùng tiêu đề:
+1. URL chính xác của kho Classroom50 của nhóm; và
+2. tên GitHub của người đại diện.
 
-   ```text
-   [Proposal] <tên nhóm> — <tên dự án>
-   ```
+Nếu đã có issue hợp lệ cho kho đó, đây là issue chính thức. Tiếp tục tại đó và
+không tạo issue khác.
 
-4. Điền Issue Form và dán liên kết commit đề xuất.
-5. Gửi issue.
+Nếu chưa có, sau khi mọi thành viên đồng ý với commit đề xuất, người đại diện với
+vai trò quản lý issue mặc định:
 
-Issue là bản tóm tắt và lịch sử trao đổi mà lớp có thể xem. Commit riêng tư được
-liên kết là đề xuất đầy đủ chính thức. Mỗi nhóm chỉ dùng một issue trong suốt dự
-án.
+1. chọn **Issues -> New issue -> Project topic proposal**;
+2. dùng tiêu đề `[Proposal] <tên nhóm> — <tên dự án>`;
+3. điền mọi trường bắt buộc;
+4. chỉ liệt kê tên GitHub;
+5. dán URL kho nhóm và URL hoặc SHA commit đề xuất chính xác;
+6. gửi issue.
 
-## 8. Đọc và phản hồi đánh giá đề xuất
+Issue hợp lệ được tạo sớm nhất theo thời gian GitHub cho đúng URL kho nhóm trở
+thành issue chính thức. Issue hợp lệ phải ở đúng kho học phần, có đủ trường, nêu
+đúng kho dự án và liên kết commit đề xuất thuộc kho đó. Tính hợp lệ được xác định
+khi giảng viên lần đầu xử lý các issue cạnh tranh. Sau khi issue chính thức đã
+được ghi nhận, lựa chọn đó được giữ ổn định; một issue cũ nhưng thiếu thông tin
+không thể thay thế issue đã chọn chỉ vì được sửa hoàn chỉnh về sau.
 
-Giảng viên dùng các nhãn:
+Nếu sau đó có issue trùng cho cùng kho, ngừng dùng issue mới. Giảng viên bình
+luận:
 
 ```text
-status: pending
-status: revision-required
-status: approved
-status: rejected
+Duplicate of #<canonical-issue-number>
+
+Continue all proposal updates, scheduling, and final submission in the original issue.
 ```
 
-Không có phản hồi không có nghĩa là đã phê duyệt. Chỉ bình luận của giảng viên
-nêu đúng SHA mới xác lập phiên bản được phê duyệt.
+Issue mới được đóng. Issue trùng không giống trường hợp hai nhóm khác nhau chọn
+trùng chính xác một bài toán.
 
-Khi cần sửa, nhóm chỉnh cùng tệp đề xuất, tạo commit mới và bình luận trong cùng
-issue bằng liên kết commit mới.
+### 10. Hiểu trạng thái kiểm tra trùng chính xác
 
-## 9. Cập nhật đề xuất đã được phê duyệt
+Issue chính thức chỉ dùng:
 
-Các điều chỉnh triển khai nhỏ thường không cần phê duyệt lại. Thay đổi quan trọng
-về bài toán, miền ứng dụng, dữ liệu chính, phương pháp chính, đầu ra, phạm vi lớn,
-giả định quan trọng hoặc thành viên nhóm cần được phê duyệt.
+```text
+status: submitted
+status: recorded
+status: duplicate-problem
+```
+
+- `status: submitted`: bài toán đang chờ so sánh với các bài toán đã ghi nhận.
+- `status: recorded`: tại thời điểm kiểm tra không tìm thấy bài toán trùng chính
+  xác trước đó. Trạng thái này không chứng nhận phạm vi, tính khả thi, phương
+  pháp, độ đúng hoặc kết quả dự kiến.
+- `status: duplicate-problem`: một kho nhóm khác đã ghi nhận cùng bài toán chính
+  xác. Nhóm phải sửa bài toán trong đề xuất và issue hiện có.
+
+Cùng lĩnh vực rộng, phương pháp, họ dữ liệu hoặc miền ứng dụng chưa đủ để coi là
+trùng chính xác. Khi hai nhóm chọn đúng cùng bài toán, issue đầy đủ được tạo sớm
+hơn thường được giữ. Nhóm còn lại đăng đề xuất sửa trước 23:59 ngày 2026-09-27
+trong cùng issue.
+
+### 11. Cập nhật đề xuất
+
+Đề xuất là kế hoạch có thể thay đổi. Nhóm có thể đổi phạm vi, phương pháp, dữ
+liệu, công cụ, cách triển khai, đầu ra hoặc mức độ tham vọng. Báo cáo cuối phải
+giải thích thay đổi quan trọng.
+
+Tạo commit cho mỗi lần sửa và bình luận trong issue chính thức:
+
+```text
+PROPOSAL UPDATE
+
+Previous proposal commit:
+<old commit URL or SHA>
+
+New proposal commit:
+<new commit URL or SHA>
+
+Selected problem changed: yes/no
+
+Summary of changes:
+- ...
+
+Reason for the changes:
+- ...
+```
+
+Khi bài toán cụ thể thay đổi, giảng viên tạm đặt lại `status: submitted` và chỉ
+lặp lại kiểm tra trùng chính xác. Các thay đổi khác không cần trạng thái mới. Mọi
+cập nhật đều không gia hạn hạn cuối chung.
+
+### 12. Thay đổi thành viên hoặc người quản lý issue
+
+Thay đổi thành viên là ngoại lệ hành chính. Sửa `team.json`, tạo commit và đăng
+trong issue chính thức:
+
+```text
+MEMBERSHIP CHANGE REQUEST
+
+Current members:
+- ...
+
+Proposed members:
+- ...
+
+Reason:
+- ...
+
+Commit updating team.json:
+<commit URL or SHA>
+```
+
+Thay đổi chỉ có hiệu lực sau xác nhận rõ ràng của giảng viên. Mọi thành viên vẫn
+phải cùng học phần và tổng số vẫn từ một đến năm.
+
+Nếu người đại diện không thể tiếp tục quản lý issue, nhóm ghi một lần bàn giao
+trong chính issue đó, không mở issue khác:
+
+```text
+ISSUE CUSTODIAN HANDOVER
+
+Previous custodian: @...
+New custodian: @...
+All listed members agree: yes
+Reason: ...
+```
+
+Bàn giao không thay đổi người đã nhận bài ban đầu và không trao quyền tự quyết dự
+án cho bất kỳ thành viên nào.
+
+### 13. Phát triển dự án
+
+Dùng Git và GitHub thông thường:
 
 ```bash
-git add proposal/proposal.md team.json
-git commit -m "Update project proposal"
-git push
-git rev-parse HEAD
+git switch -c <short-purpose-branch>
+git add <paths>
+git commit -m "Describe the project change"
+git push -u origin <short-purpose-branch>
 ```
 
-Bình luận trong issue hiện có theo mẫu `PROPOSAL UPDATE REQUEST` ở phần tiếng
-Anh. Khi thay đổi thành viên, nêu rõ tên cần thêm hoặc bỏ. Phiên bản cũ vẫn chính
-thức cho đến khi có bình luận `APPROVED UPDATE` nêu SHA mới.
+Nên dùng pull request và đánh giá chéo trong nhóm nhiều người. Số commit, số pull
+request và số dòng thay đổi chỉ là minh chứng, không phải công thức điểm.
 
-Không có hạn riêng cho việc đổi chủ đề. Khi bài toán đã chọn thay đổi, nhóm
-phải cập nhật ngay trong cùng issue đề xuất. Việc đổi chủ đề không gia hạn hạn
-nộp cuối chung.
-
-## 10. Phát triển dự án
-
-Quy trình đồ họa được khuyến nghị:
-
-```text
-GitHub Issue → nhánh → commit/push → Pull Request → review → merge
-```
-
-Số commit, Pull Request, dòng thay đổi hoặc mức hoạt động GitHub không trực tiếp
-tạo điểm.
-
-Duy trì các tệp:
+Duy trì trong suốt dự án:
 
 ```text
 project/README.md
@@ -668,12 +796,13 @@ docs/AI_USAGE.md
 docs/EXTERNAL_RESOURCES.md
 ```
 
-Không commit mật khẩu, token, khóa riêng, dữ liệu cá nhân riêng tư, dữ liệu vi
-phạm bản quyền hoặc tệp nhị phân lớn không cần thiết.
+Không commit khóa bí mật, dữ liệu cá nhân không cần thiết, tài liệu phân phối trái
+phép hoặc phụ thuộc lớn không được giải thích. Ghi rõ nguồn bên ngoài, giấy phép,
+điều kiện truy cập, tiền xử lý và giới hạn tái tạo.
 
-## 11. Chuẩn bị kho cuối cùng
+### 14. Chuẩn bị kho và báo cáo cuối
 
-Kho cuối cùng có ít nhất:
+Commit cuối phải có:
 
 ```text
 README.md
@@ -681,90 +810,76 @@ team.json
 proposal/proposal.md
 report/report.pdf
 slides/slides.pdf
-project/README.md và tài liệu dự án
+project/README.md
 docs/CONTRIBUTIONS.md
 docs/AI_USAGE.md
 docs/EXTERNAL_RESOURCES.md
 ```
 
-Báo cáo phải có mục **Thay đổi so với đề xuất đã được phê duyệt**. Nếu không có
-thay đổi quan trọng, ghi rõ điều đó.
+README riêng tư và báo cáo phải nêu họ tên chính thức, mã sinh viên và tên GitHub
+của từng thành viên. Xóa các dòng giữ chỗ không dùng. Báo cáo phải có mục **Thay
+đổi so với đề xuất đã nộp**, mô tả thay đổi quan trọng hoặc ghi rõ không có thay
+đổi.
 
-## 12. Nộp phiên bản cuối
+Biên dịch mẫu báo cáo đã chọn thành `report/report.pdf`. Đặt slide cuối tại
+`slides/slides.pdf`.
 
-### Tự kiểm tra cấu trúc, không có điểm
+Chạy:
 
 ```bash
 python3 check_project_files.py final
 ```
 
-### Tạo commit cuối
+Đây vẫn là kiểm tra cấu trúc không có điểm. Vượt qua kiểm tra không đồng nghĩa với
+điểm số hoặc đánh giá chất lượng.
+
+### 15. Ghi nhận phiên bản nộp cuối và trình bày
+
+Sau khi mọi thành viên đồng ý với đúng commit cuối:
 
 ```bash
-git add .
-git commit -m "Submit final project"
+git status
 git push
 git rev-parse HEAD
 ```
 
-### Sao chép liên kết commit bằng giao diện GitHub
-
-Mở **Commits**, mở commit `Submit final project` và sao chép liên kết cố định.
-
-Trước 2026-11-04 23:59 ICT, bình luận trong issue hiện có:
+Đăng trong issue chính thức trước 23:59 ngày 2026-11-04:
 
 ```text
 FINAL SUBMISSION
 
-Commit:
-<liên kết commit đầy đủ hoặc SHA 40 ký tự>
+Final commit:
+<permanent commit URL or complete SHA>
+
+Report:
+report/report.pdf at the final commit
+
+Slides:
+slides/slides.pdf at the final commit
+
+All listed members agree to this submitted version: yes
 ```
 
-Không force-push làm mất commit, xóa commit hoặc làm SHA đã nộp không còn truy
-cập được trước khi chấm xong.
+Không tạo issue mới và không dùng cơ chế chấm hay kích hoạt nộp của Classroom50.
+Bình luận trong issue và commit Git chính xác xác định phiên bản nộp.
 
-### Giới hạn của giao diện Classroom50
+Bắt đầu trình bày từ ngày 2026-11-06. Báo cáo và Slide có phần điểm chung; phần
+trình bày miệng/quản lý thời gian và hỏi đáp được chấm riêng theo rubric.
 
-Vì `final-project` là bài tập kho trống và không chấm tự động, Classroom50 không
-có **View grade** có ý nghĩa hoặc nút **Submit** trên trình duyệt. Liên kết commit
-được đăng trong issue là bản ghi nộp bài.
+### 16. Xử lý sự cố an toàn
 
-## 13. Sau hạn nộp
-
-- Push sau hạn không thay thế SHA đã nộp.
-- SHA thay thế chỉ được chấp nhận khi giảng viên bình luận rõ.
-- Nộp muộn, gia hạn và hình thức xử lý là quyết định thủ công của giảng viên.
-- Giảng viên chấm đúng commit đã được liên kết trong bản chụp kho.
-
-## 14. Xử lý lỗi
-
-- **Kho trùng hoặc sai thành viên đại diện:** dừng và báo giảng viên; không tự
-  tạo thêm kho hoặc issue.
-- **Không mời được hoặc không truy cập được:** kiểm tra tên GitHub, lớp và
-  **Manage collaborators**.
-- **Sai `origin`:** chạy `git remote -v`; không push khi chưa đúng kho riêng tư.
-- **Lộ thông tin bí mật:** thu hồi hoặc thay khóa ngay và báo giảng viên.
-- **Tệp quá lớn:** bỏ khỏi commit, lưu ở nguồn hợp pháp và mô tả trong
-  `EXTERNAL_RESOURCES.md`.
-- **Thành viên thứ sáu hoặc khác học phần:** nhóm chưa hợp lệ cho đến khi được
-  xử lý.
-- **Sai kho chủ đề hoặc sai SHA:** bình luận sửa và báo giảng viên; không xóa
-  lịch sử nếu chưa được yêu cầu.
-- **Đề xuất còn pending hoặc bị từ chối:** phản hồi và sửa trong issue hiện có.
-
-## 15. Nội dung được chấm và không được chấm
-
-Xem [`Rubrics.md`](Rubrics.md).
-
-```text
-Đề xuất:       bắt buộc, không có điểm
-Báo cáo:       60 điểm, năm thành phần chung của nhóm
-Trình bày:     40 điểm = Slide chung 12 + Trình bày miệng cá nhân 12 + Hỏi đáp cá nhân 16
-Điểm giảng viên: một tổng điểm đầy đủ trên 100 cho mỗi sinh viên
-Điểm cuối:     trung bình cộng các tổng điểm đầy đủ khi có nhiều giảng viên chấm
-```
-
-Việc có đủ tệp không tự chứng minh tính đúng đắn. Tự kiểm tra, nhãn issue, số
-commit, số dòng thay đổi và mức hoạt động GitHub không trực tiếp tạo điểm. Giảng
-viên chấm thủ công kho và báo cáo đã nộp, slide, phần trình bày hoặc minh họa,
-hỏi đáp và mức độ hiểu công việc.
+- **Nhiều sinh viên đã nhận bài riêng:** ngừng dùng các kho trùng và liên hệ giảng
+  viên trước khi xóa hoặc chuyển công việc. Không tự gộp danh tính hoặc lịch sử.
+- **Sai remote:** không push. Kiểm tra `git remote -v` và chỉ sửa sau khi xác định
+  đúng kho riêng tư của nhóm.
+- **Đã có issue chính thức:** tiếp tục trong issue đó, không mở issue khác.
+- **Có `status: duplicate-problem`:** sửa bài toán cụ thể và đề xuất, rồi cập nhật
+  cùng issue trước hạn sửa.
+- **Thay đổi thành viên:** dùng `MEMBERSHIP CHANGE REQUEST`, không âm thầm sửa
+  danh sách.
+- **Người đại diện vắng:** ghi bàn giao quản lý trong cùng issue.
+- **Tệp quá lớn không phù hợp với Git:** lưu hợp pháp ở nơi khác và ghi nguồn,
+  giấy phép, cách lấy, tiền xử lý và tái tạo.
+- **Đã commit bí mật:** thu hồi bí mật ngay, báo giảng viên khi cần và dùng quy
+  trình làm sạch lịch sử phù hợp. Một commit xóa sau đó không xóa bí mật khỏi
+  lịch sử cũ.

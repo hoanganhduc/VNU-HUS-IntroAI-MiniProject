@@ -2,19 +2,28 @@ name: Project topic proposal
 description: Publish one class-visible proposal summary for a final-project group.
 title: "[Proposal] "
 labels:
-  - "status: pending"
+  - "status: submitted"
 body:
   - type: markdown
     attributes:
       value: |
-        Use one issue for the entire project. Do not include student IDs, email addresses, phone numbers, credentials, or unnecessary personal information. The linked private commit is the authoritative full proposal.
+        Use one canonical issue for the entire project. Submit only after every listed member agrees to the exact proposal commit. Use GitHub usernames only; do not include official full names, student IDs, email addresses, phone numbers, credentials, or unnecessary personal information.
 
   - type: input
     id: group_name
     attributes:
       label: Group name
-      description: Use the same group name as team.json.
-      placeholder: Example group name
+      description: Use exactly the group name in the private team.json.
+      placeholder: Your group name
+    validations:
+      required: true
+
+  - type: input
+    id: repository_url
+    attributes:
+      label: Exact Classroom50 group-repository URL
+      description: Paste the private final-project repository URL created for this group. The URL identifies the canonical issue.
+      placeholder: https://github.com/VNU-HUS/<classroom>-final-project-<founder>
     validations:
       required: true
 
@@ -31,7 +40,7 @@ body:
     id: members
     attributes:
       label: All member GitHub usernames
-      description: List one to five approved usernames, including the founder, one per line.
+      description: List one to five usernames, including the founder, one per line. Do not list official names or student IDs.
       placeholder: |
         github-username-1
         github-username-2
@@ -42,7 +51,7 @@ body:
     id: project_title
     attributes:
       label: Project title
-      placeholder: Project title
+      placeholder: Your project title
     validations:
       required: true
 
@@ -58,10 +67,18 @@ body:
       required: true
 
   - type: textarea
+    id: selected_problem
+    attributes:
+      label: Exact selected problem
+      description: State one precise problem. The exact-duplicate check applies to this problem, not merely to a broad area, method, or dataset family.
+    validations:
+      required: true
+
+  - type: textarea
     id: public_summary
     attributes:
       label: Class-visible summary
-      description: Summarize the problem, motivation, and intended result without private information.
+      description: Summarize the problem, motivation, method, and intended output without private identity information.
     validations:
       required: true
 
@@ -69,7 +86,7 @@ body:
     id: scope
     attributes:
       label: Student-defined scope and feasibility
-      description: State what the group intends to complete, what it does not promise, and why the plan is feasible.
+      description: State intended deliverables, explicit non-goals, available resources, and why the plan is feasible by the common deadline.
     validations:
       required: true
 
@@ -77,23 +94,31 @@ body:
     id: method_resources
     attributes:
       label: Planned method, data, tools, and sources
-      description: Identify the planned approach and the important external resources.
+      description: Identify the planned approach and important external resources. Do not invent citations, datasets, licenses, metrics, or results.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_output
+    attributes:
+      label: Expected output or demonstration
+      description: Describe the concrete artifact, experiment, evaluation, or demonstration the group intends to produce.
     validations:
       required: true
 
   - type: textarea
     id: overlap
     attributes:
-      label: Relationship to existing proposals
-      description: State which listed proposals are closest and how this project differs. Write “No close proposal found” when appropriate.
+      label: Relationship to existing recorded problems
+      description: Name the closest recorded problems and explain the difference. Write "No close recorded problem found" when appropriate.
     validations:
       required: true
 
   - type: input
     id: proposal_commit
     attributes:
-      label: Exact Classroom50 proposal commit URL
-      description: Paste the permanent GitHub URL or complete 40-character SHA for the commit named “Submit topic proposal”.
+      label: Exact proposal commit URL or complete SHA
+      description: Paste the permanent commit URL or complete 40-character SHA for the exact proposal version agreed by every member.
       placeholder: https://github.com/VNU-HUS/.../commit/...
     validations:
       required: true
@@ -101,13 +126,15 @@ body:
   - type: checkboxes
     id: confirmations
     attributes:
-      label: Confirmations
+      label: Group confirmations
       options:
-        - label: Every listed member agreed to this group and proposal.
+        - label: Every listed member agreed to this group, selected problem, scope, and exact proposal commit.
           required: true
-        - label: The group reviewed existing topic issues before submitting.
+        - label: The issue custodian searched this board for the exact repository URL and founder username and found no existing canonical issue.
           required: true
-        - label: External ideas, papers, datasets, libraries, models, and repositories are identified in the full proposal.
+        - label: The issue contains GitHub usernames only and no official full names or student IDs.
           required: true
-        - label: The group chose and justified its own project scope and feasibility.
+        - label: External ideas, papers, datasets, libraries, models, and repositories are identified in the private full proposal.
+          required: true
+        - label: The group chose and justified its own scope and feasibility.
           required: true

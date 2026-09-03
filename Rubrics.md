@@ -24,7 +24,7 @@ further sub-scores.
 | **Methodology and implementation** | **20** | The approach, algorithms, data, and important design choices; justification of those choices; the implemented system, tools, and code organization; and consistency between the report and repository. |
 | **Results, discussion, conclusion, and future work** | **20** | Appropriate evidence, experiments, examples, or evaluation; clear results and metrics when applicable; interpretation and discussion rather than output alone; important limitations or failures; conclusions; and realistic future directions. |
 | **References and supporting materials** | **4** | Genuine sources actually used, appropriate attribution, and useful appendices or external supporting materials when relevant. A project is not penalized for omitting an appendix that it does not need. |
-| **Report quality, repository documentation, and contributions** | **8** | A readable final PDF; compliance with the current exact-commit GitHub submission process; useful README, setup, and reproduction instructions; appropriate code or project documentation; and clear contribution, AI-use, and external-resource declarations. Canvas and printed-copy submission are not required. |
+| **Report quality, repository documentation, and contributions** | **8** | A readable final PDF; compliance with the current exact-commit GitHub submission process; useful README, setup, and reproduction instructions; appropriate code or project documentation; and clear contribution, AI-use, and external-resource declarations. |
 | **Report total** | **60** | One group total shared by the valid group members. |
 
 ### Presentation — 40 points, scored individually
@@ -83,7 +83,7 @@ Các mô tả dưới đây giải thích nội dung của từng thành phần,
 | **Phương pháp và triển khai** | **20** | Cách tiếp cận, thuật toán, dữ liệu và các lựa chọn thiết kế quan trọng; lý do của các lựa chọn; hệ thống đã triển khai, công cụ và tổ chức mã nguồn; cùng sự nhất quán giữa báo cáo và kho dự án. |
 | **Kết quả, thảo luận, kết luận và hướng phát triển** | **20** | Minh chứng, thí nghiệm, ví dụ hoặc đánh giá phù hợp; kết quả và số liệu rõ ràng khi áp dụng được; phân tích và thảo luận thay vì chỉ liệt kê đầu ra; các giới hạn hoặc thất bại quan trọng; kết luận; và hướng phát triển thực tế. |
 | **Tài liệu tham khảo và tài liệu bổ trợ** | **4** | Các nguồn thực sự được sử dụng, ghi nguồn phù hợp, cùng phụ lục hoặc tài liệu bổ trợ hữu ích khi cần. Nhóm không bị trừ điểm chỉ vì không có phụ lục khi dự án không cần phụ lục. |
-| **Chất lượng báo cáo, tài liệu kho dự án và đóng góp** | **8** | Báo cáo PDF dễ đọc; tuân thủ quy trình nộp bằng commit Git chính xác; README, hướng dẫn cài đặt và tái tạo kết quả hữu ích; tài liệu mã nguồn hoặc dự án phù hợp; cùng khai báo rõ đóng góp, việc sử dụng AI và tài nguyên bên ngoài. Không yêu cầu nộp qua Canvas hoặc nộp bản in. |
+| **Chất lượng báo cáo, tài liệu kho dự án và đóng góp** | **8** | Báo cáo PDF dễ đọc; tuân thủ quy trình nộp bằng commit Git chính xác; README, hướng dẫn cài đặt và tái tạo kết quả hữu ích; tài liệu mã nguồn hoặc dự án phù hợp; cùng khai báo rõ đóng góp, việc sử dụng AI và tài nguyên bên ngoài. |
 | **Tổng điểm Báo cáo** | **60** | Một điểm chung cho các thành viên hợp lệ của nhóm. |
 
 ### Trình bày — 40 điểm, chấm riêng từng sinh viên

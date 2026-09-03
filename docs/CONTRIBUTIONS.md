@@ -1,6 +1,6 @@
 # Contributions / Đóng góp
 
-Use one row for every approved GitHub username in `team.json`. Describe concrete
+Use one row for every GitHub username listed in `team.json`. Describe concrete
 responsibilities and outputs; raw commit counts or lines changed are not a grading
 formula.
 

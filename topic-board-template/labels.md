@@ -1,14 +1,13 @@
 # Required topic-board labels
 
-Create these labels in each private class topic-board repository:
+Create exactly these topic-status labels in each private class topic board:
 
 | Label | Meaning |
 |---|---|
-| `status: pending` | Initial proposal or revision has not yet received a decision. |
-| `status: revision-required` | The group must revise the proposal and post a newer commit URL. |
-| `status: update-pending` | A material change to an approved proposal is awaiting review. |
-| `status: approved` | The exact commit named in an instructor approval comment is approved. |
-| `status: rejected` | The submitted proposal or update was rejected. |
+| `status: submitted` | The exact selected problem is awaiting the duplicate-problem check. |
+| `status: recorded` | No earlier exact duplicate problem was found at the time of review. This does not certify scope, feasibility, method, correctness, or expected results. |
+| `status: duplicate-problem` | A different group repository already recorded the same exact problem; this group must update its proposal and canonical issue. |
 
-Labels organize the board but do not create scores and do not replace an
-instructor comment naming the authoritative approved commit.
+A second issue for the same group repository is a duplicate **issue**, not a
+`duplicate-problem` status. Staff close the later issue after linking it to the
+canonical issue.

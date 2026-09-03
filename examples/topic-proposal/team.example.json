@@ -1,0 +1,22 @@
+{
+  "course": "MAT1206E",
+  "group_name": "Fictional Search Lab",
+  "founder": "fictional-search-founder",
+  "members": [
+    {
+      "full_name": "Fictional Student An",
+      "student_id": "FICT-MAT1206E-001",
+      "github_username": "fictional-search-founder"
+    },
+    {
+      "full_name": "Fictional Student Binh",
+      "student_id": "FICT-MAT1206E-002",
+      "github_username": "fictional-search-b"
+    },
+    {
+      "full_name": "Fictional Student Chi",
+      "student_id": "FICT-MAT1206E-003",
+      "github_username": "fictional-search-c"
+    }
+  ]
+}
